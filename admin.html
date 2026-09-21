@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>管理画面 | ノイズ食堂</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg0:#0a0806;--bg1:#100d09;--bg2:#161209;
+  --gold:#c9a769;--gold2:#e8c97a;--bronze:#a97142;--wine:#8a3324;--sage:#707d5e;
+  --text:#e7dfcd;--text2:#a89e89;--text3:#69614f;
+  --border:rgba(201,167,105,0.13);--border2:rgba(201,167,105,0.30);
+}
+body{font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:var(--bg0);color:var(--text);line-height:1.7;min-height:100vh}
+.serif,.logo,.login-box h1,.panel h2,.admin-item-title{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:2px;font-size:11px;font-weight:700;text-decoration:none;transition:all .25s;letter-spacing:1.5px;background:transparent;border:1px solid var(--border2);color:var(--gold2);cursor:pointer}
+.btn:hover{background:rgba(201,167,105,0.08);border-color:var(--gold)}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#161209;border:none;font-weight:800}
+.btn-p:hover{filter:brightness(1.08);background:linear-gradient(135deg,var(--gold),var(--gold2))}
+.btn-danger{color:#d98d7c;border-color:rgba(138,51,36,0.45)}
+.btn-danger:hover{background:rgba(138,51,36,0.15);border-color:#d98d7c}
+.btn-sm{padding:6px 14px;font-size:11px}
+/* login */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
+.login-wrap::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(201,167,105,0.07),transparent 65%);pointer-events:none}
+.login-box{position:relative;width:100%;max-width:380px;background:rgba(16,13,9,0.9);border:1px solid var(--border2);border-radius:6px;padding:44px 36px;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,0.6)}
+.seal{width:48px;height:48px;margin:0 auto 20px;border:1px solid var(--border2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.login-box h1{font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
+.login-box p.sub{font-size:12px;color:var(--text3);margin-bottom:28px;letter-spacing:.5px}
+.login-box input{width:100%;background:rgba(10,8,6,0.6);border:1px solid var(--border2);padding:13px 16px;border-radius:2px;font-size:13px;margin-bottom:12px}
+.login-box input:focus{outline:none;border-color:var(--gold)}
+.login-box .btn{width:100%;justify-content:center;margin-top:6px}
+.login-error{color:#d98d7c;font-size:12px;margin-top:14px;min-height:16px}
+.back-link{display:inline-block;margin-top:18px;font-size:11px;color:var(--text3);text-decoration:none;letter-spacing:.5px}
+.back-link:hover{color:var(--gold2)}
+/* dashboard */
+.dash-wrap{max-width:1280px;margin:0 auto;padding:0 32px 80px}
+.dash-header{display:flex;align-items:center;justify-content:space-between;padding:26px 0;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap;gap:14px}
+.logo{font-size:15px;font-weight:700;letter-spacing:1px}
+.logo span{font-family:'Hiragino Sans','Yu Gothic UI',sans-serif;color:var(--gold2);font-size:11px;letter-spacing:2px;margin-left:8px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.dash-grid{display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:28px;align-items:start}
+@media(max-width:1000px){.dash-grid{grid-template-columns:1fr}}
+.panel{background:rgba(16,13,9,0.75);border:1px solid var(--border);border-radius:6px;padding:28px}
+.panel h2{font-size:17px;font-weight:700;margin-bottom:22px;letter-spacing:.5px}
+.panel-hd{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.panel-hd h2{margin-bottom:0}
+.fg{margin-bottom:18px}
+.fg label,.fg .lb{display:block;font-size:12px;font-weight:700;margin-bottom:6px;letter-spacing:.5px;color:var(--gold2)}
+.fg .hint{font-weight:400;color:var(--text3);font-size:11px;margin-left:8px;letter-spacing:0}
+.fg input[type=text],.fg input[type=date],.fg input[type=number],.fg select,.fg textarea{width:100%;background:rgba(10,8,6,0.6);border:1px solid var(--border2);padding:11px 14px;border-radius:2px;font-size:13px}
+.fg select option{background:#100d09}
+.fg textarea{resize:vertical;min-height:90px;line-height:1.85}
+.fg textarea.body{min-height:320px}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.counter{font-size:11px;color:var(--text3);text-align:right;margin-top:4px}
+.counter.warn{color:#d98d7c;font-weight:700}
+.modes{display:grid;gap:8px}
+.mode-opt{display:flex;gap:12px;align-items:center;padding:10px 14px;border:1px solid var(--border);cursor:pointer;background:rgba(22,18,9,.6);border-radius:2px;transition:.2s}
+.mode-opt:hover{border-color:var(--border2)}
+.mode-opt:has(input:checked){border-color:var(--gold);background:rgba(201,167,105,0.08)}
+.mode-opt input{accent-color:#c9a769}
+.mode-opt b{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;color:var(--gold2);font-size:18px}
+.mode-opt small{display:block;color:var(--text3);font-size:11px;line-height:1.5}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo-slot{border:1px dashed var(--border2);padding:8px;background:rgba(22,18,9,.6);border-radius:2px}
+.photo-slot .slot-name{font-weight:700;font-size:12px;margin-bottom:6px;color:var(--gold2);letter-spacing:1px}
+.pv{aspect-ratio:4/3;background:#15110b;margin-bottom:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px}
+.pv img,.pv svg{width:100%;height:100%;object-fit:cover;display:block}
+.photo-slot .btns{display:flex;gap:4px;flex-wrap:wrap}
+.photo-slot input[type=file]{display:none}
+.photo-slot .st{font-size:10.5px;color:var(--text3);margin-top:6px}
+.ph{margin:0;position:relative}.ph figcaption{display:none}.ph .ph-note{display:none}
+.admin-item{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--border)}
+.admin-item:first-child{border-top:none}
+.admin-item-thumb{aspect-ratio:4/3;overflow:hidden;background:#15110b;border-radius:2px}
+.admin-item-thumb svg,.admin-item-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.admin-item-meta{font-size:11px;color:var(--text3);display:flex;gap:8px;flex-wrap:wrap;align-items:center;letter-spacing:.5px}
+.pill{border:1px solid currentColor;padding:1px 9px;font-weight:700;font-size:10.5px;border-radius:2px;letter-spacing:1px}
+.tone-shu{color:#d98d7c}.tone-indigo{color:var(--gold2)}.tone-ocha{color:#d9a878}.tone-nori{color:#b7c19e}
+.admin-item-title{font-weight:700;font-size:15px;line-height:1.6;margin:4px 0;color:#fff}
+.admin-item-actions{display:flex;flex-direction:column;gap:6px}
+@media(max-width:560px){.admin-item{grid-template-columns:80px 1fr}.admin-item-actions{grid-column:1/-1;flex-direction:row}.photos{grid-template-columns:1fr}}
+.picker{display:flex;flex-wrap:wrap;gap:8px}
+.picker.cats{display:grid;grid-template-columns:1fr 1fr}
+.pk{text-align:left;background:rgba(22,18,9,.6);border:1px solid var(--border);border-radius:2px;padding:9px 12px;cursor:pointer;transition:.2s}
+.pk:hover{border-color:var(--border2)}
+.pk.on{border-color:var(--gold);background:rgba(201,167,105,.1)}
+.pk b{display:block;font-size:12.5px;color:#fff}
+.pk.on b{color:var(--gold2)}
+.pk small{display:block;font-size:10.5px;color:var(--text3);line-height:1.5;margin-top:2px}
+@media(max-width:560px){.picker.cats{grid-template-columns:1fr}}
+.rk-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.rk-tools input{flex:1;min-width:200px;background:rgba(10,8,6,0.6);border:1px solid var(--border2);padding:10px 14px;border-radius:2px;font-size:13px}
+.rk-tools input:focus{outline:none;border-color:var(--gold)}
+.rk-admin{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.rk-item{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px;border:1px solid var(--border);border-radius:2px;background:rgba(22,18,9,.5)}
+.rk-item .th{width:96px;height:72px;overflow:hidden;background:#15110b;border-radius:2px;display:flex;align-items:center;justify-content:center}
+.rk-item .th img{width:100%;height:100%;object-fit:cover;display:block}
+.rk-item .th b{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:34px;color:var(--gold2);opacity:.25}
+.rk-item .nm{font-size:13px;font-weight:700;color:#fff;line-height:1.5}
+.rk-item .nm i{font-style:normal;color:var(--gold2);margin-right:6px;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.rk-item .mm{font-size:11px;color:var(--text3);line-height:1.5;margin-bottom:6px}
+.rk-item .bt{display:flex;gap:6px;flex-wrap:wrap}
+.rk-item input[type=file]{display:none}
+.cats-ref{font-size:12px;color:var(--text2);background:rgba(201,167,105,0.04);border:1px dashed var(--border2);padding:10px 12px;margin-top:8px;line-height:1.8;border-radius:2px}
+</style>
+</head>
+<body>
+
+<div id="loginScreen" class="login-wrap" style="display:none">
+  <div class="login-box">
+    <div class="seal">食</div>
+    <h1>管理画面</h1>
+    <p class="sub">コラムの追加・編集・削除</p>
+    <form id="loginForm" autocomplete="off">
+      <input type="text" id="loginId" placeholder="ID" required aria-label="ID">
+      <input type="password" id="loginPw" placeholder="パスワード" required aria-label="パスワード">
+      <button class="btn btn-p" type="submit">ログイン</button>
+      <div class="login-error" id="loginError" role="alert"></div>
+    </form>
+    <a class="back-link" href="index.html">← サイトに戻る</a>
+  </div>
+</div>
+
+<div id="dashboard" style="display:none">
+<div class="dash-wrap">
+  <header class="dash-header">
+    <div class="logo">ノイズ食堂<span>管理画面</span></div>
+    <div class="actions">
+      <a class="btn btn-sm" href="index.html" target="_blank" rel="noopener">サイトを見る</a>
+      <button class="btn btn-sm" id="exportBtn" type="button">JSON書き出し</button>
+      <label class="btn btn-sm" for="importFile" style="cursor:pointer">JSON読み込み</label>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+      <button class="btn btn-sm btn-danger" id="logoutBtn" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <div class="dash-grid">
+    <section class="panel">
+      <h2 id="formTitle">新規コラムを作成</h2>
+      <form id="colForm">
+        <input type="hidden" id="fId">
+
+        <div class="fg">
+          <span class="lb">文体の型<span class="hint">4つのうち1つ</span></span>
+          <div class="modes" id="modeBox"></div>
+        </div>
+
+        <div class="fg"><label for="fTitle">タイトル</label><input type="text" id="fTitle" required></div>
+        <div class="fg"><label for="fEn">英字サブタイトル<span class="hint">任意</span></label><input type="text" id="fEn" placeholder="例: ELEVEN FIVE-STAR LINES"></div>
+
+        <div class="fg">
+          <span class="lb">カテゴリー<span class="hint">ランキングから軒数を自動集計</span></span>
+          <input type="hidden" id="fCatKey"><div class="picker cats" id="pkCatKey"></div>
+          <div class="cats-ref" id="catRef"></div>
+        </div>
+        <div id="customCat" style="display:none">
+          <div class="row2">
+            <div class="fg"><label for="fCategory">カテゴリー名</label><input type="text" id="fCategory"></div>
+            <div class="fg"><label for="fCatCount">軒数<span class="hint">数字</span></label><input type="number" id="fCatCount" min="0"></div>
+          </div>
+          <div class="fg"><label for="fCatTone">色</label>
+            <select id="fCatTone"><option value="shu">朱</option><option value="indigo">藍</option><option value="ocha">茶</option><option value="nori">海苔</option></select>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="fg"><label for="fDate">公開日</label><input type="date" id="fDate"></div>
+          <div class="fg"><label for="fRead">読了目安<span class="hint">空欄で自動</span></label><input type="text" id="fRead" placeholder="例: 10分"></div>
+        </div>
+
+        <div class="fg">
+          <span class="lb">写真<span class="hint">未登録の枠は文字だけの枠で表示</span></span>
+          <div class="photos" id="photoBox"></div>
+        </div>
+        <div class="fg"><label for="fMono">外観枠の飾り文字<span class="hint">写真が無いとき、外観の枠に薄く入る一文字</span></label><input type="text" id="fMono" maxlength="1"></div>
+
+        <div class="fg"><label for="fRank">ランキング順位<span class="hint">数字。入れると、ランキングのその行から、このコラムへリンクします</span></label><input type="number" id="fRank" min="1" max="155"></div>
+        <div class="fg"><label for="fTags">タグ<span class="hint">カンマ（,）で区切る。記事の上に表示</span></label><input type="text" id="fTags" placeholder="例: ガッツリ食べる店, 友人から紹介された店"></div>
+        <div class="fg"><label for="fExcerpt">抜粋</label><textarea id="fExcerpt"></textarea></div>
+        <div class="fg">
+          <label for="fBody">本文<span class="hint">空行で段落。## 見出し / - 箇条書き / **太字** / 〔演出メモ〕</span></label>
+          <textarea id="fBody" class="body"></textarea>
+          <div class="counter" id="bodyCount">0 文字</div>
+        </div>
+        <div class="fg"><label for="fNote">編集メモ<span class="hint">記事末尾のメモ箱。任意</span></label><textarea id="fNote" style="min-height:70px"></textarea></div>
+        <div class="fg">
+          <label for="fDescription">メタディスクリプション</label>
+          <textarea id="fDescription" style="min-height:70px"></textarea>
+          <div class="counter" id="descCount">0 / 160</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-p" type="submit">保存する</button>
+          <button class="btn" type="button" id="resetFormBtn">クリア</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-hd"><h2>コラム一覧</h2><span id="listCount" style="font-size:13px;color:var(--ink3)"></span></div>
+      <div id="adminList"></div>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:28px">
+    <div class="panel-hd"><h2>ランキングのサムネイル</h2><span id="rkInfo" style="font-size:13px;color:var(--text3)"></span></div>
+    <p style="font-size:12px;color:var(--text3);margin:-8px 0 16px;line-height:1.8">店ごとに写真を1枚登録できます。写真は小さく縮めて、このブラウザに保存されます。未登録の店は、ジャンルの一文字を入れた枠で表示されます。</p>
+    <div class="rk-tools">
+      <input type="search" id="rkQ" placeholder="店名・順位で探す（例：野毛、12）" aria-label="店名で探す">
+      <button type="button" class="pk" id="rkOnlyEmpty" aria-pressed="false"><b>写真なしだけ</b></button>
+    </div>
+    <div class="rk-admin" id="rkAdmin"></div>
+  </section>
+</div>
+</div>
+
+<script src="media.js"></script>
+<script src="data.js"></script>
+<script>
+const ADMIN_ID = 'admin';
+const ADMIN_PW_HASH = '898705dcc9eeada4429ce759765acb3b9dee8fd40a145f48ae202b342619739b'; /* 元テンプレートと同じ認証情報（ID/パスワード）を引き継いでいます。変更する場合はsha256ハッシュを差し替えてください */
+const SESSION_KEY = 'gm_admin_session';
+const $ = id => document.getElementById(id);
+const photoData = { exterior:'', interior:'', dish:'' };
+
+async function sha256Hex(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+const isLoggedIn = () => sessionStorage.getItem(SESSION_KEY) === '1';
+function showDashboard(){ $('loginScreen').style.display='none'; $('dashboard').style.display='block'; resetForm(); renderAdminList(); renderRankAdmin(); }
+function showLogin(){ $('dashboard').style.display='none'; $('loginScreen').style.display='flex'; $('loginPw').value=''; }
+
+$('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const hash = await sha256Hex($('loginPw').value);
+  if($('loginId').value.trim() === ADMIN_ID && hash === ADMIN_PW_HASH){
+    sessionStorage.setItem(SESSION_KEY, '1'); $('loginError').textContent=''; showDashboard();
+  } else $('loginError').textContent = 'IDまたはパスワードが正しくありません。';
+});
+$('logoutBtn').addEventListener('click', () => { sessionStorage.removeItem(SESSION_KEY); showLogin(); });
+
+/* ---- 静的パーツの生成 ---- */
+$('modeBox').innerHTML = Object.keys(GM_MODES).map(k => {
+  const m = GM_MODES[k];
+  return `<label class="mode-opt"><input type="radio" name="mode" value="${k}"><b>${m.num}</b><span>${gmEsc(m.short)}<small>${gmEsc(m.long)}</small></span></label>`;
+}).join('');
+const CATS = gmCategoryStats();
+/* プルダウンではなく、選択肢を全部見せるピッカー */
+const PICK = {};
+function renderPicker(id){
+  const p = PICK[id], cur = $(id).value;
+  p.box.innerHTML = p.items.map(it => `<button type="button" class="pk${cur === it[0] ? ' on' : ''}" data-v="${gmEsc(it[0])}" aria-pressed="${cur === it[0]}"><b>${gmEsc(it[1])}</b>${it[2] ? `<small>${gmEsc(it[2])}</small>` : ''}</button>`).join('');
+  p.box.querySelectorAll('.pk').forEach(b => b.addEventListener('click', () => { setVal(id, b.dataset.v); p.onChange && p.onChange(); }));
+}
+function setVal(id, v){ $(id).value = v; renderPicker(id); }
+function mkPicker(id, box, items, onChange){ PICK[id] = { box:$(box), items, onChange }; renderPicker(id); }
+mkPicker('fCatKey', 'pkCatKey', [...CATS.map(c => [c.key, c.label, c.desc]), ['__custom', '自由入力', '名前・軒数・色を自分で決める']], () => updateCatUI());
+
+$('photoBox').innerHTML = Object.keys(GM_PHOTO_KINDS).map(k => `
+  <div class="photo-slot">
+    <div class="slot-name">${GM_PHOTO_KINDS[k]}</div>
+    <div class="pv" id="pv-${k}"></div>
+    <div class="btns">
+      <label class="btn btn-sm" for="pf-${k}" style="cursor:pointer">選ぶ</label>
+      <button type="button" class="btn btn-sm" data-clear="${k}">外す</button>
+    </div>
+    <input type="file" id="pf-${k}" accept="image/*" data-kind="${k}">
+    <div class="st" id="st-${k}"></div>
+  </div>`).join('');
+
+function updateCatUI(){
+  const key = $('fCatKey').value;
+  $('customCat').style.display = key === '__custom' ? 'block' : 'none';
+  const c = CATS.find(x => x.key === key);
+  $('catRef').textContent = c ? `${c.desc}（${c.shops}軒 / ${c.rows}行）` : 'ランキングとは別に、好きな名前と軒数を付けられます。';
+}
+
+function updatePreview(kind){
+  const box = $('pv-' + kind);
+  if(photoData[kind]) box.innerHTML = `<img src="${gmEsc(photoData[kind])}" alt="${GM_PHOTO_KINDS[kind]}">`;
+  else box.innerHTML = gmIllustration(kind, { mono:$('fMono').value, title:$('fTitle').value });
+  $('st-' + kind).textContent = photoData[kind] ? '写真を登録済み' : '未登録（枠のみ表示）';
+}
+const updateAllPreviews = () => Object.keys(GM_PHOTO_KINDS).forEach(updatePreview);
+['fMono','fTitle'].forEach(id => $(id).addEventListener('input', () => { if(!photoData.exterior) updatePreview('exterior'); }));
+
+document.querySelectorAll('.photo-slot input[type=file]').forEach(inp => inp.addEventListener('change', async e => {
+  const f = e.target.files[0]; if(!f) return;
+  const k = e.target.dataset.kind;
+  $('st-' + k).textContent = '縮小中…';
+  try { photoData[k] = await gmCompressImage(f, 1000, 0.8); updatePreview(k); }
+  catch(err){ $('st-' + k).textContent = '読み込みに失敗しました'; }
+  e.target.value = '';
+}));
+document.querySelectorAll('[data-clear]').forEach(b => b.addEventListener('click', () => { photoData[b.dataset.clear] = ''; updatePreview(b.dataset.clear); }));
+
+$('fBody').addEventListener('input', () => {
+  const n = $('fBody').value.replace(/\s+/g, '').length;
+  $('bodyCount').textContent = n.toLocaleString() + ' 文字（目安 5,000）';
+  $('bodyCount').className = 'counter' + (n > 5300 ? ' warn' : '');
+});
+$('fDescription').addEventListener('input', e => {
+  const n = e.target.value.length;
+  $('descCount').textContent = `${n} / 160`;
+  $('descCount').className = 'counter' + (n > 160 ? ' warn' : '');
+});
+
+const fmtSave = v => v ? v.replaceAll('-', '.') : '';
+const fmtInput = v => v ? v.replaceAll('.', '-') : '';
+
+$('colForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const modeEl = document.querySelector('input[name=mode]:checked');
+  const key = $('fCatKey').value;
+  const col = {
+    id: $('fId').value || gmGenerateId(),
+    mode: modeEl ? Number(modeEl.value) : 1,
+    title: $('fTitle').value.trim(),
+    en: $('fEn').value.trim(),
+    mono: $('fMono').value.trim(),
+    photos: Object.assign({}, photoData),
+    excerpt: $('fExcerpt').value.trim(),
+    body: $('fBody').value.trim().split(/\n\s*\n/).map(p => p.trim()).filter(Boolean),
+    description: $('fDescription').value.trim(),
+    note: $('fNote').value.trim(),
+    rank: $('fRank').value ? Number($('fRank').value) : undefined,
+    tags: $('fTags').value.split(/[,、，]/).map(t => t.trim()).filter(Boolean),
+    date: fmtSave($('fDate').value),
+    read: $('fRead').value.trim()
+  };
+  if(key === '__custom'){
+    col.category = $('fCategory').value.trim() || 'その他';
+    col.catCount = $('fCatCount').value;
+    col.catTone = $('fCatTone').value;
+  } else col.catKey = key;
+  const prev = gmGetAllColumns().find(c => c.id === col.id);
+  if(prev){ if(prev.thumb) col.thumb = prev.thumb; if(prev.gallery) col.gallery = prev.gallery; }
+  if(!col.read) col.read = gmReadMinutes(col) + '分';
+  if(gmUpsertColumn(col)){ resetForm(); renderAdminList(); }
+});
+
+function resetForm(){
+  $('colForm').reset();
+  $('fId').value = '';
+  $('fDate').value = new Date().toISOString().slice(0, 10);
+  document.querySelector('input[name=mode][value="1"]').checked = true;
+  setVal('fCatKey', CATS[0].key);
+  Object.keys(photoData).forEach(k => photoData[k] = '');
+  updateCatUI(); updateAllPreviews();
+  $('bodyCount').textContent = '0 文字（目安 5,000）'; $('bodyCount').className = 'counter';
+  $('descCount').textContent = '0 / 160'; $('descCount').className = 'counter';
+  $('formTitle').textContent = '新規コラムを作成';
+}
+$('resetFormBtn').addEventListener('click', resetForm);
+
+function loadForEdit(id){
+  const col = gmGetAllColumns().find(c => c.id === id); if(!col) return;
+  resetForm();
+  $('fId').value = col.id;
+  const r = document.querySelector(`input[name=mode][value="${col.mode || 1}"]`); if(r) r.checked = true;
+  $('fTitle').value = col.title || '';
+  $('fEn').value = col.en || '';
+  if(col.catKey && CATS.some(c => c.key === col.catKey)) setVal('fCatKey', col.catKey);
+  else {
+    setVal('fCatKey', '__custom');
+    $('fCategory').value = col.category || '';
+    $('fCatCount').value = col.catCount || '';
+    $('fCatTone').value = col.catTone || 'indigo';
+  }
+  updateCatUI();
+  $('fDate').value = fmtInput(col.date || '');
+  $('fRead').value = col.read || '';
+  $('fMono').value = col.mono || '';
+  Object.keys(photoData).forEach(k => photoData[k] = (col.photos && col.photos[k]) || '');
+  updateAllPreviews();
+  $('fExcerpt').value = col.excerpt || '';
+  $('fBody').value = (col.body || []).join('\n\n');
+  $('fBody').dispatchEvent(new Event('input'));
+  $('fNote').value = col.note || '';
+  $('fTags').value = (col.tags || []).join(', ');
+  $('fRank').value = col.rank || '';
+  $('fDescription').value = col.description || '';
+  $('fDescription').dispatchEvent(new Event('input'));
+  $('formTitle').textContent = '編集: ' + col.title;
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function renderAdminList(){
+  const cols = gmGetAllColumns();
+  $('listCount').textContent = cols.length + '本';
+  const wrap = $('adminList');
+  if(!cols.length){ wrap.innerHTML = '<p style="color:var(--ink3);font-size:14px">コラムがありません。左のフォームから作成してください。</p>'; return; }
+  wrap.innerHTML = cols.map(col => {
+    const cat = gmCategoryOf(col), m = GM_MODES[col.mode];
+    const thumb = col.thumb ? `<img src="${gmEsc(col.thumb)}" alt="">` : (col.photos && col.photos.dish) ? `<img src="${gmEsc(col.photos.dish)}" alt="">` : gmIllustration('dish', col);
+    return `<div class="admin-item">
+      <div class="admin-item-thumb">${thumb}</div>
+      <div>
+        <div class="admin-item-meta"><span class="pill tone-${cat.tone}">${gmEsc(cat.label)}</span><span>${gmEsc(col.date || '')}</span></div>
+        <div class="admin-item-title">${gmEsc(col.title)}</div>
+        <div class="admin-item-meta">${gmCharCount(col).toLocaleString()}文字</div>
+      </div>
+      <div class="admin-item-actions">
+        <button class="btn btn-sm" data-edit="${gmEsc(col.id)}">編集</button>
+        <button class="btn btn-sm btn-danger" data-del="${gmEsc(col.id)}">削除</button>
+      </div></div>`;
+  }).join('');
+  wrap.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => loadForEdit(b.dataset.edit)));
+  wrap.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => {
+    if(confirm('このコラムを削除しますか？この操作は取り消せません。')){ gmDeleteColumn(b.dataset.del); renderAdminList(); }
+  }));
+}
+
+$('exportBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(gmGetAllColumns(), null, 2)], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'noise-shokudo-columns.json'; a.click();
+  URL.revokeObjectURL(url);
+});
+$('importFile').addEventListener('change', e => {
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const arr = JSON.parse(ev.target.result);
+      if(!Array.isArray(arr)) throw new Error('invalid');
+      arr.forEach(c => { if(c && c.id) gmUpsertColumn(c); });
+      renderAdminList(); alert(arr.length + '件のコラムを読み込みました。');
+    } catch(err){ alert('JSONファイルの読み込みに失敗しました。形式をご確認ください。'); }
+  };
+  reader.readAsText(file); e.target.value = '';
+});
+
+/* ---- ランキングのサムネイル管理 ---- */
+let rkOnlyEmpty = false;
+function renderRankAdmin(){
+  const q = $('rkQ').value.normalize('NFKC').toLowerCase().trim();
+  const withImg = GM_ROWS.filter(r => gmRankThumb(r.n)).length;
+  $('rkInfo').textContent = '写真あり ' + withImg + ' / ' + GM_ROWS.length;
+  const list = GM_ROWS.filter(r => (!q || (r.n + ' ' + r.raw + ' ' + r.genre).normalize('NFKC').toLowerCase().includes(q)) && (!rkOnlyEmpty || !gmRankThumb(r.n)));
+  $('rkAdmin').innerHTML = list.map(r => {
+    const src = gmRankThumb(r.n);
+    return `<div class="rk-item" data-n="${r.n}">
+      <div class="th">${src ? `<img src="${gmEsc(src)}" alt="">` : `<b>${gmEsc(GM_GENRE_MARK[r.genre] || '食')}</b>`}</div>
+      <div><div class="nm"><i>${r.n}</i>${gmEsc(r.name)}</div><div class="mm">${gmEsc(r.memo || r.genre)}</div>
+        <div class="bt"><label class="btn btn-sm" for="rkf${r.n}" style="cursor:pointer">写真を選ぶ</label><input type="file" id="rkf${r.n}" accept="image/*" data-n="${r.n}">
+        ${src ? `<button type="button" class="btn btn-sm btn-danger" data-rm="${r.n}">外す</button>` : ''}</div></div></div>`;
+  }).join('') || '<p style="color:var(--text3);font-size:13px">該当する店がありません。</p>';
+}
+$('rkAdmin').addEventListener('change', async e => {
+  const inp = e.target.closest('input[type=file]'); if(!inp || !inp.files[0]) return;
+  try { const d = await gmCompressImage(inp.files[0], 360, 0.72); if(gmSetRankThumb(Number(inp.dataset.n), d)) renderRankAdmin(); }
+  catch(err){ alert('画像を読み込めませんでした。'); }
+});
+$('rkAdmin').addEventListener('click', e => {
+  const b = e.target.closest('[data-rm]'); if(!b) return;
+  if(gmSetRankThumb(Number(b.dataset.rm), '')) renderRankAdmin();
+});
+$('rkQ').addEventListener('input', renderRankAdmin);
+$('rkOnlyEmpty').addEventListener('click', () => { rkOnlyEmpty = !rkOnlyEmpty; $('rkOnlyEmpty').classList.toggle('on', rkOnlyEmpty); $('rkOnlyEmpty').setAttribute('aria-pressed', rkOnlyEmpty); renderRankAdmin(); });
+
+if(isLoggedIn()) showDashboard(); else showLogin();
+</script>
+</body>
+</html>

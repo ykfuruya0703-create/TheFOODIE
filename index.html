@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">THE FOODIE EDIT | LUXURY FOODIE JOURNAL</title>
+<meta name="description" id="metaDesc" content="自分なりの美味しいもの、フーディーを深く読み解く、大人のための食事コラム。家族・仲間・おひとり様・デートの四つの食卓から、食べ歩き155件のランキングを読み解く。">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg0:#0a0806;--bg1:#100d09;--bg2:#161209;
+  --gold:#c9a769;--gold2:#e8c97a;--bronze:#a97142;--wine:#8a3324;--sage:#707d5e;
+  --cream:#efe7d6;--text:#e7dfcd;--text2:#a89e89;--text3:#69614f;
+  --border:rgba(201,167,105,0.13);--border2:rgba(201,167,105,0.30);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:var(--bg0);color:var(--text);overflow-x:hidden;line-height:1.7}
+.serif{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 8%,rgba(201,167,105,0.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 85%,rgba(138,51,36,0.05) 0%,transparent 60%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(201,167,105,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,167,105,0.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(201,167,105,0.25);border-radius:2px}
+a{color:inherit}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.container{max-width:1180px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+@media(max-width:768px){.container{padding:0 22px}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(201,167,105,0.15)}50%{box-shadow:0 0 46px rgba(201,167,105,0.38)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.animate-up{animation:fadeInUp .8s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.gradient-text{background:linear-gradient(135deg,var(--gold2) 0%,var(--gold) 55%,var(--bronze) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:1px solid}
+.tag-gold{background:rgba(201,167,105,0.08);color:var(--gold2);border-color:rgba(201,167,105,0.3)}
+.tag-bronze{background:rgba(169,113,66,0.1);color:#d9a878;border-color:rgba(169,113,66,0.35)}
+.tag-wine{background:rgba(138,51,36,0.1);color:#d98d7c;border-color:rgba(138,51,36,0.32)}
+.tag-sage{background:rgba(112,125,94,0.1);color:#b7c19e;border-color:rgba(112,125,94,0.35)}
+/* tone: data.js のカテゴリー色 → 既存パレット */
+.tone-shu{color:#d98d7c}.tone-indigo{color:var(--gold2)}.tone-ocha{color:#d9a878}.tone-nori{color:#b7c19e}
+.sub-tag{display:inline-flex;align-items:center;padding:3px 12px;border-radius:2px;font-size:10.5px;letter-spacing:1px;color:var(--text2);border:1px solid var(--border2);background:rgba(201,167,105,0.04)}
+.cat-tag{display:inline-flex;align-items:center;padding:3px 12px;border-radius:2px;font-size:10.5px;font-weight:700;letter-spacing:1px;border:1px solid currentColor;background:rgba(255,255,255,0.02)}
+.mode-tag{display:inline-flex;align-items:center;padding:3px 12px;border-radius:2px;font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--gold2);border:1px solid rgba(201,167,105,0.3);background:rgba(201,167,105,0.08)}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:70px;display:flex;align-items:center;padding:0 40px;background:rgba(10,8,6,0.86);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;width:100%;max-width:1180px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:38px;height:38px;border:1px solid var(--border2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--gold2);flex-shrink:0}
+.logo-text b{font-size:14px;color:#fff;display:block;letter-spacing:2px}
+.logo-text span{font-size:9px;color:var(--gold);letter-spacing:3px}
+nav{display:flex;gap:30px;margin-left:52px}
+nav a{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:1px;transition:.2s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:.3s}
+nav a:hover{color:var(--gold2)}nav a:hover::after{width:100%}
+.hdr-cta{margin-left:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:2px;font-size:11px;font-weight:700;text-decoration:none;transition:all .25s;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:0}
+.btn-o{background:transparent;border:1px solid var(--border2);color:var(--gold2)}
+.btn-o:hover{background:rgba(201,167,105,0.08);border-color:var(--gold)}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#161209;font-weight:800}
+.btn-p:hover{filter:brightness(1.08)}
+.btn-lg{padding:15px 34px;font-size:12px}
+@media(max-width:960px){nav{display:none}header{padding:0 22px}}
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;position:relative;overflow:hidden}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 18px;border-radius:2px;background:rgba(201,167,105,0.06);border:1px solid rgba(201,167,105,0.24);font-size:10px;color:var(--gold2);letter-spacing:2px;margin-bottom:30px}
+.hero-badge .ln{width:16px;height:1px;background:var(--gold)}
+.hero-title{font-size:clamp(34px,5vw,62px);font-weight:700;line-height:1.35;letter-spacing:1px;margin-bottom:26px}
+.hero-sub{font-size:clamp(13px,1.6vw,15px);color:var(--text2);max-width:520px;line-height:2;margin-bottom:42px}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-bottom:58px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap;padding-top:36px;border-top:1px solid var(--border)}
+.hs-val{font-size:28px;font-weight:700;line-height:1}
+.hs-label{font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center}
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.hero-card-wrap{display:none}}
+.hero-card{background:rgba(16,13,9,0.92);border:1px solid var(--border2);border-radius:4px;box-shadow:0 40px 100px rgba(0,0,0,0.65),0 0 50px rgba(201,167,105,0.06);position:relative;overflow:hidden;animation:float 5.5s ease-in-out infinite;cursor:pointer}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:2}
+.hc-body{padding:26px}
+.hc-lbl{font-size:9px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px}
+.hc-t{font-size:16px;font-weight:700;line-height:1.6;margin-bottom:14px}
+.hc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.hc-tag{font-size:9px;padding:4px 10px;border-radius:2px;background:rgba(201,167,105,0.06);color:var(--text2);border:1px solid var(--border)}
+/* sections */
+section{padding:104px 0;position:relative;z-index:1}
+.sec-badge{margin-bottom:18px}
+.sec-title{font-size:clamp(24px,3.2vw,40px);font-weight:700;letter-spacing:.5px;line-height:1.4;margin-bottom:18px}
+.sec-title small{font-size:.6em;color:var(--gold2);margin-left:.5em;font-weight:700}
+.sec-desc{font-size:14px;color:var(--text2);max-width:620px;line-height:2}
+.sec-hd{margin-bottom:56px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:0 40px;position:relative;z-index:1}
+/* photo slots */
+.ph{position:relative;margin:0;overflow:hidden;background:#15110b;min-height:0}
+.ph svg{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.5) sepia(.28) brightness(.92) contrast(1.05)}
+.ph img{width:100%;height:100%;display:block;object-fit:cover}
+.ph::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:3px 3px;opacity:.4;mix-blend-mode:overlay;pointer-events:none}
+.ph::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,6,.45),transparent 45%);z-index:1;pointer-events:none}
+.ph figcaption,.ph .ph-note{z-index:2}
+.ph figcaption{position:absolute;left:0;top:0;background:rgba(10,8,6,.82);color:var(--gold2);font-size:9.5px;font-weight:700;padding:3px 10px;letter-spacing:2px;border-right:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.ph .ph-note{position:absolute;right:6px;bottom:4px;font-style:normal;font-size:9px;color:#fff;opacity:.6;letter-spacing:1px}
+.mosaic{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:220px;background:var(--bg0)}
+.mosaic .ph:first-child{grid-row:1/3}
+.mosaic .ph figcaption{font-size:9px;padding:2px 7px}
+/* concept */
+#concept{background:var(--bg1)}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:768px){.con-grid{grid-template-columns:1fr}}
+.con-quote{border-left:2px solid var(--gold);padding-left:26px;margin-bottom:30px}
+.con-quote p{font-size:clamp(19px,2.3vw,26px);font-weight:700;line-height:1.75;letter-spacing:.5px}
+.con-quote p em{color:var(--gold2);font-style:normal}
+.con-body{font-size:14px;color:var(--text2);line-height:2}
+.cp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+@media(max-width:900px){.cp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cp-grid{grid-template-columns:1fr}}
+.cp-list{display:flex;flex-direction:column;gap:10px}
+.cp{display:flex;align-items:flex-start;gap:16px;background:rgba(22,18,9,0.7);border:1px solid var(--border);border-radius:2px;padding:20px;transition:all .3s;text-align:left;width:100%;cursor:pointer}
+.cp:hover{border-color:var(--gold);transform:translateX(4px)}
+.cp-ico{font-size:22px;flex-shrink:0;margin-top:-2px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho',serif;width:28px}
+.cp-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.5px}
+.cp-d{font-size:12px;color:var(--text2);line-height:1.8}
+.cp.st{cursor:default}.cp.st:hover{transform:none;border-color:var(--border2)}
+.cp-c{display:block;margin-top:8px;font-size:12px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+/* pickup */
+#pickup{background:var(--bg0)}
+.pickup-card{display:grid;grid-template-columns:440px 1fr;border:1px solid var(--border2);border-radius:4px;overflow:hidden;background:rgba(16,13,9,0.6);cursor:pointer;transition:.35s}
+.pickup-card:hover{border-color:var(--gold);box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+@media(max-width:900px){.pickup-card{grid-template-columns:1fr}}
+.pickup-card .mosaic{height:100%;min-height:340px}
+.pickup-body{padding:44px}
+.pu-meta{display:flex;gap:14px;align-items:center;margin-bottom:18px;font-size:11px;color:var(--text3);letter-spacing:1px;flex-wrap:wrap}
+.pu-title{font-size:clamp(20px,2.6vw,30px);font-weight:700;line-height:1.6;margin-bottom:16px}
+.pu-excerpt{font-size:13.5px;color:var(--text2);line-height:2;margin-bottom:24px}
+.pu-link{font-size:11px;color:var(--gold2);letter-spacing:1.5px;display:inline-flex;align-items:center;gap:6px}
+/* columns */
+#columns{background:var(--bg1)}
+.filter-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px}
+.f-tag{font-size:11px;letter-spacing:1px;padding:8px 18px;border-radius:2px;border:1px solid var(--border);color:var(--text2);background:transparent;cursor:pointer;transition:.25s}
+.f-tag:hover{border-color:var(--border2);color:#fff}
+.f-tag[aria-pressed="true"]{border-color:var(--gold);color:var(--gold2);background:rgba(201,167,105,0.06)}
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:1100px){.col-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.col-grid{grid-template-columns:1fr}}
+.newbadge{position:absolute;top:12px;right:12px;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#161209;font-size:10px;font-weight:800;letter-spacing:2px;padding:4px 12px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.col-card{position:relative;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:rgba(16,13,9,0.55);cursor:pointer;transition:all .3s;display:flex;flex-direction:column}
+.col-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.col-body{padding:22px 22px 26px;flex:1;display:flex;flex-direction:column}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.col-meta{font-size:10px;color:var(--text3);letter-spacing:1px;margin-bottom:10px;display:flex;gap:14px;flex-wrap:wrap}
+.col-title{font-size:14.5px;font-weight:700;line-height:1.7;color:#fff;margin-bottom:10px}
+.col-excerpt{font-size:12px;color:var(--text2);line-height:1.9;flex:1}
+.col-read{margin-top:16px;font-size:10px;color:var(--gold2);letter-spacing:1.5px}
+.empty{padding:30px 0;color:var(--text3);font-size:13px}
+/* categories */
+#cats{background:var(--bg0)}
+.guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.guide-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.guide-grid{grid-template-columns:repeat(2,1fr)}}
+.guide{background:rgba(16,13,9,0.7);border:1px solid var(--border);border-radius:3px;padding:26px 16px 22px;text-align:center;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;align-items:center}
+.guide:hover{border-color:var(--gold);transform:translateY(-3px)}
+.guide-n{font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:14px}
+.guide-i{font-size:34px;font-weight:700;line-height:1;margin-bottom:14px;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.guide-i small{font-size:12px;margin-left:3px;color:var(--text2);font-weight:400}
+.guide-l{font-size:13.5px;color:#fff;font-weight:700;line-height:1.5;margin-bottom:8px}
+.guide-d{font-size:11px;color:var(--text2);line-height:1.8}
+.guide-go{margin-top:10px;font-size:10px;color:var(--gold2);letter-spacing:1.5px}
+/* ranking */
+#ranking{background:var(--bg1)}
+.fl-row{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:start;margin-bottom:6px}
+.fl-lb{font-size:10px;letter-spacing:2px;color:var(--gold);padding-top:9px}
+.fl-row .filter-tags{margin-bottom:14px;gap:8px}
+.f-tag small{color:var(--text3);margin-left:6px;font-size:10px}
+.f-tag[aria-pressed="true"] small{color:var(--gold)}
+@media(max-width:640px){.fl-row{grid-template-columns:1fr;gap:0}.fl-lb{padding-top:0;margin-bottom:6px}}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.bar select,.bar input[type=search]{font:inherit;font-size:13px;padding:11px 14px;border:1px solid var(--border2);border-radius:2px;background:rgba(10,8,6,0.6);color:var(--text)}
+.bar select option{background:#100d09}
+.bar input[type=search]{flex:1;min-width:200px}
+.bar input:focus,.bar select:focus{outline:none;border-color:var(--gold)}
+.activecat{display:none;align-items:center;gap:12px;margin-bottom:16px;font-size:13px;color:var(--text2)}
+.activecat.on{display:flex}
+.activecat b{color:var(--gold2)}
+.activecat button{border:1px solid var(--border2);background:transparent;color:var(--gold2);font-size:11px;padding:4px 14px;border-radius:2px;cursor:pointer;letter-spacing:1px}
+.status{font-size:12px;color:var(--text3);margin-bottom:12px;letter-spacing:.5px}
+.rk-list{list-style:none;border-top:1px solid var(--border2)}
+.rk{display:grid;grid-template-columns:56px 104px 1fr 140px 108px;gap:14px;align-items:center;padding:12px 6px;border-bottom:1px solid var(--border)}
+.rk-thbtn{padding:0;border:0;background:none;cursor:pointer;display:block;line-height:0;transition:.25s}
+.rk-thbtn:hover .rk-th{border-color:var(--gold)}
+.rk-go{display:block;text-align:left;padding:0;border:0;background:none;cursor:pointer;color:inherit;font:inherit}
+.rk-go .rk-name{border-bottom:1px solid var(--border2);transition:.25s}
+.rk-go:hover .rk-name{color:var(--gold2);border-bottom-color:var(--gold)}
+.rk-go i{display:inline-block;margin-left:10px;font-style:normal;font-size:10px;letter-spacing:1.5px;color:var(--gold2);border:1px solid var(--border2);background:rgba(201,167,105,.06);padding:1px 8px;border-radius:2px;vertical-align:2px}
+.rk-th{display:block;width:104px;height:78px;border:1px solid var(--border);border-radius:2px;overflow:hidden;background:#15110b;position:relative}
+.rk-th img{width:100%;height:100%;object-fit:cover;display:block}
+.rk-th-empty{background:linear-gradient(135deg,#2a2118,#131009);display:flex;align-items:center;justify-content:center}
+.rk-th-empty::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:3px 3px;opacity:.4}
+.rk-th-empty b{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:40px;font-weight:700;color:var(--gold2);opacity:.2;line-height:1}
+.rk:hover{background:rgba(201,167,105,0.03)}
+.rk-n{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:700;font-size:22px;text-align:right;color:var(--text3);font-variant-numeric:tabular-nums}
+.rk-name{font-weight:700;font-size:15px;line-height:1.5;color:#fff}
+.rk-memo{display:block;font-size:12px;color:var(--text2);margin-top:1px}
+.rk-genre{font-size:11.5px;color:var(--text2);letter-spacing:.5px}
+.rk-stars{font-size:14px;letter-spacing:.08em;color:var(--gold2);white-space:nowrap;text-align:right}
+.rk-stars i{font-style:normal;color:rgba(201,167,105,.16)}
+.rp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;color:#d98d7c;border:1px solid rgba(138,51,36,.5);background:rgba(138,51,36,.1);padding:1px 8px;border-radius:2px;margin-left:10px;vertical-align:2px}
+.rk.s5 .rk-n{color:var(--gold2)}
+@media(max-width:700px){.rk{grid-template-columns:34px 76px 1fr;gap:4px 10px}.rk-th{width:76px;height:57px}.rk-th-empty b{font-size:28px}.rk-n{font-size:17px}.rk-genre{grid-column:3;grid-row:2}.rk-stars{grid-column:3;grid-row:3;text-align:left}}
+.more{display:block;margin:34px auto 0}
+/* cta */
+#cta{padding:120px 0;text-align:center;overflow:hidden;background:var(--bg0)}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,167,105,0.06),transparent 70%)}
+.cta-t{font-size:clamp(26px,3.6vw,44px);font-weight:700;letter-spacing:.5px;line-height:1.5;margin-bottom:18px}
+.cta-d{font-size:14px;color:var(--text2);max-width:520px;margin:0 auto 40px;line-height:1.9}
+.glow{animation:pulseGlow 3.2s ease-in-out infinite}
+footer{background:rgba(8,6,4,0.95);border-top:1px solid var(--border);padding:32px 40px;text-align:center;position:relative;z-index:1}
+footer p{font-size:12px;color:var(--text3)}
+footer strong{color:var(--text2)}
+/* article modal */
+.article-modal{position:fixed;inset:0;z-index:200;background:rgba(6,5,3,0.92);backdrop-filter:blur(6px);display:none;overflow-y:auto;padding:70px 20px}
+.article-modal.open{display:block}
+.am-inner{max-width:760px;margin:0 auto;background:var(--bg1);border:1px solid var(--border2);border-radius:4px;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,0.7);animation:fadeInUp .35s ease both}
+.am-close{position:fixed;top:24px;right:calc(50% - 380px + 20px);width:40px;height:40px;border-radius:50%;border:1px solid var(--border2);background:rgba(10,8,6,0.8);color:var(--gold2);font-size:16px;cursor:pointer;z-index:210}
+@media(max-width:840px){.am-close{right:20px}}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bg0)}
+.tri .ph{aspect-ratio:4/3}
+@media(max-width:640px){.tri{grid-template-columns:1fr}}
+.am-body{padding:44px 52px 52px}
+@media(max-width:700px){.am-body{padding:30px 22px 40px}}
+.am-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11px;color:var(--text3);letter-spacing:1px;margin:16px 0 14px}
+.am-title{font-size:clamp(21px,3vw,30px);font-weight:700;line-height:1.6;margin-bottom:6px}
+.am-en{font-size:10px;color:var(--gold);letter-spacing:3px;margin-bottom:30px}
+.am-text{max-width:41em}
+.am-text p{font-size:14px;color:var(--text);line-height:2.1;margin-bottom:1.4em}
+.am-text h3{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:19px;font-weight:700;color:var(--gold2);line-height:1.6;margin:2.4em 0 .9em;padding-bottom:.4em;border-bottom:1px solid var(--border2)}
+.am-text ul,.am-text ol{margin:0 0 1.5em 1.4em;color:var(--text)}
+.am-text li{font-size:14px;line-height:2;margin-bottom:.3em}
+.am-text strong{color:#fff;font-weight:700}
+.stage{display:inline-block;font-size:10.5px;font-weight:700;color:#d9a878;border:1px solid rgba(169,113,66,.5);background:rgba(169,113,66,.1);border-radius:2px;padding:0 8px;margin:0 2px;line-height:1.8;vertical-align:1px;letter-spacing:.5px}
+.thumb1{display:block!important;background:var(--bg0)}
+.thumb1 .ph{height:100%;min-height:220px}
+.pickup-card .thumb1 .ph{min-height:340px}
+.vbadge{position:absolute;left:10px;bottom:10px;z-index:2;font-size:10px;letter-spacing:1.5px;color:var(--gold2);background:rgba(10,8,6,.78);border:1px solid var(--border2);padding:3px 10px;border-radius:2px}
+.gal{background:#000;border-bottom:1px solid var(--border2)}
+.gal-main{aspect-ratio:16/10;background:radial-gradient(ellipse at 50% 40%,#1a140c,#050403);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gal-main img,.gal-main video{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;display:block}
+.gal-cap{font-size:12px;color:var(--text2);line-height:1.8;padding:12px 20px 4px;min-height:2.6em}
+.gal-strip{display:flex;gap:8px;padding:10px 16px 16px;overflow-x:auto}
+.gal-th{position:relative;flex:0 0 96px;height:72px;padding:0;border:1px solid var(--border);border-radius:2px;background:#0a0806;cursor:pointer;overflow:hidden;opacity:.6;transition:.2s}
+.gal-th:hover{opacity:.9}
+.gal-th.on{opacity:1;border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.gal-th img{width:100%;height:100%;object-fit:cover;display:block}
+.gal-th .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;background:rgba(0,0,0,.38);text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.am-fig{margin:2em 0;text-align:center}
+.am-fig img,.am-fig video{max-width:100%;max-height:560px;border:1px solid var(--border2);border-radius:2px;background:#0a0806;display:block;margin:0 auto}
+.am-fig figcaption{margin-top:10px;font-size:11.5px;color:var(--text3);letter-spacing:.5px;line-height:1.8}
+.ph img{object-position:50% 30%}
+.am-note{margin-top:38px;padding:18px 20px;border-left:2px solid var(--gold);background:rgba(201,167,105,0.04);font-size:13px;line-height:1.95;color:var(--text2)}
+.am-desc-box{margin-top:20px;padding:18px 20px;border:1px dashed var(--border2);border-radius:3px;background:rgba(201,167,105,0.03)}
+.am-desc-lbl{font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:6px}
+.am-desc-txt{font-size:11.5px;color:var(--text3);line-height:1.8}
+.am-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.am-nav button{border:1px solid var(--border);background:rgba(22,18,9,.6);padding:14px 16px;text-align:left;cursor:pointer;border-radius:2px;font-size:11px;color:var(--text3);letter-spacing:1px;line-height:1.6;transition:.25s}
+.am-nav button:hover{border-color:var(--gold)}
+.am-nav b{display:block;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:13.5px;color:var(--text);letter-spacing:0;margin-top:2px}
+.am-nav .nx{text-align:right}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#hero">
+      <div class="logo-mark serif">食</div>
+      <div class="logo-text"><b class="serif">THE FOODIE EDIT</b><span>GOURMET COLUMN</span></div>
+    </a>
+    <nav>
+      <a href="#concept">コンセプト</a>
+      <a href="#pickup">ピックアップ</a>
+      <a href="#columns">コラム一覧</a>
+      <a href="#cats">カテゴリー</a>
+      <a href="#ranking">ランキング</a>
+    </nav>
+    <div class="hdr-cta"><a href="#ranking" class="btn btn-p">ランキング →</a></div>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge animate-up"><span class="ln"></span>LUXURY FOODIE JOURNAL</div>
+        <h1 class="hero-title serif animate-up d1"><span class="gradient-text">上質という、</span><br>纏う教養。</h1>
+        <p class="hero-sub animate-up d2">自分なりの美味しいもの　フーディーを深く読み解く、<br><strong style="color:var(--gold2)">大人のための食事コラム。</strong></p>
+        <div class="hero-actions animate-up d3">
+          <a href="#columns" class="btn btn-p btn-lg glow">コラムを読む</a>
+          <a href="#ranking" class="btn btn-o btn-lg">ランキング155件 →</a>
+        </div>
+        <div class="hero-stats animate-up d4">
+          <div><div class="hs-val gradient-text" id="stRows">155</div><div class="hs-label">Ranking Rows</div></div>
+          <div><div class="hs-val" style="color:var(--gold2)" id="stCols">4</div><div class="hs-label">Columns</div></div>
+          <div><div class="hs-val" style="color:var(--text)" id="stCats">10</div><div class="hs-label">Categories</div></div>
+        </div>
+      </div>
+      <div class="hero-card-wrap"><div class="hero-card" id="heroPickupCard"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="concept">
+  <div class="container">
+    <div class="con-grid">
+      <div>
+        <div class="sec-badge"><span class="tag tag-gold">Philosophy · 定義</span></div>
+        <div class="con-quote"><p class="serif">フーディーは、もはや<br><em>「食通」ではない。</em></p></div>
+      </div>
+      <p class="con-body" style="align-self:end">有名店の数でも、星の数でもない。フーディーとは、自分なりの「おいしい」を、自分の言葉で持っている人のことです。LUXURY FOODIE JOURNALは、フーディーを「食べ歩きの達人」から「食卓に、知性と審美眼を映す人」へと読み替える食事コラムです。同じ一皿でも、誰と囲むかで、おいしさの意味は変わります。家族、仲間、おひとり様、友人と差し飲み、デート、ガッツリ食べる、会食、ランチ、そして記念日。九つの食卓から、大人が本当に知るべき"上質"を紐解きます。</p>
+    </div>
+    <div class="cp-grid">
+        <button type="button" class="cp" data-cat="family"><div class="cp-ico">◆</div><div><div class="cp-t">家族</div><div class="cp-d">同じ卓を囲み、同じ時間を持ち帰る。定番が、やがて記憶になる</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="nakama"><div class="cp-ico">◆</div><div><div class="cp-t">仲間</div><div class="cp-d">大皿を分け合い、酒を酌み交わす。一人では届かない、にぎやかなおいしさ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="hitori"><div class="cp-ico">◆</div><div><div class="cp-t">おひとり様</div><div class="cp-d">誰にも合わせず、自分の速度で食べる。一皿と向き合う贅沢</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="futari"><div class="cp-ico">◆</div><div><div class="cp-t">友人と差し飲み</div><div class="cp-d">気の置けない一人と、差し向かいで。語らいの合間に、もう一杯</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="date"><div class="cp-ico">◆</div><div><div class="cp-t">デート</div><div class="cp-d">向かい合う二人の距離が、味の一部になる。会話まで含めて選ぶ一軒</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="gatsuri"><div class="cp-ico">◆</div><div><div class="cp-t">ガッツリ食べる</div><div class="cp-d">上品に少しずつではなく、腹いっぱい。量まで含めて、おいしさと呼ぶ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="kaishoku"><div class="cp-ico">◆</div><div><div class="cp-t">会食</div><div class="cp-d">大切な相手と、落ち着いて話せる一席。料理も空間も、礼を尽くして選ぶ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="lunch"><div class="cp-ico">◆</div><div><div class="cp-t">ランチ</div><div class="cp-d">昼の光の中で、気負わず食べる。一日の真ん中に置く、小さなごちそう</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="kokozo"><div class="cp-ico">◆</div><div><div class="cp-t">記念日</div><div class="cp-d">人生の節目に、ここぞという一軒を。料理と時間が、その日を特別にする</div><span class="cp-c"></span></div></button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="pickup">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-badge"><span class="tag tag-gold">Editor's Pickup</span></div>
+      <h2 class="sec-title serif">今週の一本</h2>
+      <p class="sec-desc">編集部が選ぶ、いま読むべきラグジュアリーフーディーの一篇。</p>
+    </div>
+    <div id="pickupCard"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="columns">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-badge"><span class="tag tag-bronze">Column Archive</span></div>
+      <h2 class="sec-title serif">コラム一覧<small id="colCount"></small></h2>
+      <p class="sec-desc">カテゴリーで絞り込んで、じっくりお読みください。</p>
+    </div>
+    <div class="filter-tags" id="colFilter"></div>
+    <div class="col-grid" id="colGrid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cats">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-badge"><span class="tag tag-gold">Categories</span></div>
+      <h2 class="sec-title serif">カテゴリー<small id="catCount"></small></h2>
+      <p class="sec-desc">食べに行く場面ごとに、155件を振り分けました。1軒が複数の場面に入ることもあります。数はランキングから自動で数え、押すとその店だけに絞り込みます。</p>
+    </div>
+    <div class="guide-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="ranking">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-badge"><span class="tag tag-bronze">Full Ranking</span></div>
+      <h2 class="sec-title serif">ランキング<small id="rkCount"></small></h2>
+      <p class="sec-desc">スマホのメモを、順位も表記のゆれもそのまま並べました。ジャンルはメモの書き方からの分類です。同じ屋号が二度出てくる行には「再登場」の印をつけています。</p>
+    </div>
+    <div class="fl-row"><span class="fl-lb">星</span><div class="filter-tags" id="starFilter" role="group" aria-label="星の数で絞り込む"></div></div>
+    <div class="fl-row"><span class="fl-lb">カテゴリー</span><div class="filter-tags" id="catFilter" role="group" aria-label="カテゴリーで絞り込む"></div></div>
+    <div class="fl-row"><span class="fl-lb">ジャンル</span><div class="filter-tags" id="genreFilter" role="group" aria-label="ジャンルで絞り込む"></div></div>
+    <div class="bar">
+      <input type="search" id="q" placeholder="店名・街の名前で探す（例：野毛、餃子）" aria-label="店名・街の名前で検索">
+    </div>
+    <div class="activecat" id="activeCat"></div>
+    <p class="status" id="rkStatus" aria-live="polite"></p>
+    <ol class="rk-list" id="rkList"></ol>
+    <button class="btn btn-o btn-lg more" id="moreBtn" style="display:none">さらに表示する</button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cta">
+  <div class="container">
+    <div style="display:inline-block;margin-bottom:24px"><span class="tag tag-gold">Membership</span></div>
+    <h2 class="cta-t serif">上質を知る者だけに、<br><span class="gradient-text">先んじて届ける。</span></h2>
+    <p class="cta-d">THE FOODIE EDIT 会員限定で、新着コラムと限定インタビューをいち早くお届けします。</p>
+    <a href="#columns" class="btn btn-p btn-lg glow">コラムに戻る</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong class="serif">ノイズ食堂</strong> — Gourmet Column</p>
+  <p style="margin-top:6px">食べ歩き155件を、四通りの文章で。</p>
+  <p style="margin-top:6px">© 2026 ノイズ食堂. All rights reserved.</p>
+  <p style="margin-top:10px"><a href="admin.html" rel="nofollow" style="color:var(--text3);font-size:11px;text-decoration:none;letter-spacing:1px">編集者ログイン</a></p>
+</footer>
+
+<div class="article-modal" id="articleModal" role="dialog" aria-modal="true" aria-label="コラム本文">
+  <button class="am-close" id="amClose" aria-label="閉じる">✕</button>
+  <div class="am-inner" id="amInner"></div>
+</div>
+
+<script src="media.js"></script>
+<script src="data.js"></script>
+<script>
+const COLUMNS = gmGetAllColumns();
+const CATS = gmCategoryStats();
+const DEFAULT_TITLE = document.getElementById('pageTitle').textContent;
+const DEFAULT_DESC = document.getElementById('metaDesc').getAttribute('content');
+const fmt = n => n.toLocaleString('ja-JP');
+const $ = id => document.getElementById(id);
+const chars = col => fmt(Math.round(gmCharCount(col) / 100) * 100);
+const readOf = col => col.read || gmReadMinutes(col) + '分';
+
+$('stRows').textContent = GM_ROWS.length;
+$('stCols').textContent = COLUMNS.length;
+$('stCats').textContent = CATS.length;
+
+/* ---------- ピックアップ ---------- */
+function tagsHTML(col, withTags){
+  const cat = gmCategoryOf(col), mode = GM_MODES[col.mode];
+  const extra = withTags && col.tags ? col.tags.map(t => `<span class="sub-tag">${gmEsc(t)}</span>`).join('') : '';
+  return `<div class="card-tags"><span class="cat-tag tone-${cat.tone}">${gmEsc(cat.label)}</span>${extra}</div>`;
+}
+function renderPickup(){
+  const col = COLUMNS[0];
+  if(!col){ $('pickupCard').innerHTML = '<p class="sec-desc">まだコラムがありません。</p>'; return; }
+  const mosaic = gmCardMedia(col);
+  const card = document.createElement('div');
+  card.className = 'pickup-card';
+  card.innerHTML = `${mosaic}
+    <div class="pickup-body">
+      <div class="pu-meta"><span>${gmEsc(col.date)}</span><span>・</span><span>約${chars(col)}字</span><span>・</span><span>${gmEsc(readOf(col))}で読める</span></div>
+      <div style="margin-bottom:14px">${tagsHTML(col, true)}</div>
+      <h3 class="pu-title serif">${gmEsc(col.title)}</h3>
+      <p class="pu-excerpt">${gmEsc(col.excerpt)}</p>
+      <span class="pu-link">全文を読む →</span>
+    </div>`;
+  card.addEventListener('click', () => openArticle(col.id));
+  $('pickupCard').innerHTML = '';
+  $('pickupCard').appendChild(card);
+
+  const cat = gmCategoryOf(col);
+  $('heroPickupCard').innerHTML = `${mosaic}
+    <div class="hc-body">
+      <div class="hc-lbl">最新のコラム</div>
+      <div class="hc-t serif">${gmEsc(col.title)}</div>
+      <div class="hc-tags"><span class="hc-tag">${gmEsc(cat.label)}</span><span class="hc-tag">${gmEsc(readOf(col))}</span><span class="hc-tag">${gmEsc(col.date)}</span></div>
+    </div>`;
+  $('heroPickupCard').addEventListener('click', () => openArticle(col.id));
+}
+
+/* ---------- コラム一覧 ---------- */
+let colFilter = '';
+function renderColFilter(){
+  const labels = [];
+  COLUMNS.forEach(c => { const l = gmCategoryOf(c).label; if(!labels.includes(l)) labels.push(l); });
+  const items = [['', 'すべて ' + COLUMNS.length], ...labels.map(l => [l, l])];
+  $('colFilter').innerHTML = items.map(([v, t]) => `<button class="f-tag" data-v="${gmEsc(v)}" aria-pressed="${v === colFilter}">${gmEsc(t)}</button>`).join('');
+  $('colFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { colFilter = b.dataset.v; renderColFilter(); renderColGrid(); }));
+}
+function renderColGrid(){
+  const list = colFilter ? COLUMNS.filter(c => gmCategoryOf(c).label === colFilter) : COLUMNS;
+  $('colGrid').innerHTML = list.map(col => `
+    <article class="col-card" tabindex="0" role="button" data-id="${gmEsc(col.id)}" aria-label="${gmEsc(col.title)}を読む">
+      ${col.id === COLUMNS[0].id ? '<span class="newbadge">NEW 最新</span>' : ''}
+      ${gmCardMedia(col)}
+      <div class="col-body">
+        ${tagsHTML(col)}
+        <div class="col-meta"><span>${gmEsc(col.date)}</span><span>約${chars(col)}字</span></div>
+        <div class="col-title serif">${gmEsc(col.title)}</div>
+        <div class="col-excerpt">${gmEsc(col.excerpt)}</div>
+        <div class="col-read">${gmEsc(readOf(col))}で読める →</div>
+      </div></article>`).join('') || '<p class="empty">該当するコラムはまだありません。</p>';
+  $('colGrid').querySelectorAll('.col-card').forEach(el => {
+    el.addEventListener('click', () => openArticle(el.dataset.id));
+    el.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openArticle(el.dataset.id); } });
+  });
+  $('colCount').textContent = COLUMNS.length + '本';
+}
+
+/* ---------- カテゴリー ---------- */
+function renderCats(){
+  $('catCount').textContent = CATS.length + '種';
+  $('catGrid').innerHTML = CATS.map((c, i) => {
+    const has = COLUMNS.some(x => x.catKey === c.key);
+    return `<button class="guide" data-key="${c.key}">
+      <div class="guide-n">${String(i + 1).padStart(2, '0')}</div>
+      <div class="guide-i tone-${c.tone}">${c.shops}<small>軒</small></div>
+      <div class="guide-l serif">${gmEsc(c.name)}</div>
+      <div class="guide-d">${gmEsc(c.desc)}</div>
+      ${has ? '<div class="guide-go">コラムあり</div>' : ''}
+    </button>`;
+  }).join('');
+  $('catGrid').querySelectorAll('.guide').forEach(b => b.addEventListener('click', () => {
+    state.cat = b.dataset.key; state.star = 0; state.genre = ''; state.q = ''; state.shown = PAGE;
+    $('q').value = '';
+    syncRanking();
+    $('ranking').scrollIntoView({ behavior:'smooth' });
+  }));
+}
+
+/* ---------- ランキング ---------- */
+const RANK_COL = {};
+COLUMNS.forEach(c => { if(c.rank) RANK_COL[c.rank] = c.id; });
+const PAGE = 40;
+const state = { star:0, genre:'', q:'', cat:'', shown:PAGE };
+const norm = s => String(s).normalize('NFKC').toLowerCase();
+function filterRows(){
+  const cat = CATS.find(c => c.key === state.cat);
+  const q = norm(state.q).trim();
+  return GM_ROWS.filter(r =>
+    (!state.star || r.s === state.star) &&
+    (!state.genre || r.genres.includes(state.genre)) &&
+    (!cat || cat.match(r)) &&
+    (!q || norm(r.raw + ' ' + r.genres.join(' ')).includes(q)));
+}
+function renderStarFilter(){
+  const counts = {}; GM_ROWS.forEach(r => counts[r.s] = (counts[r.s] || 0) + 1);
+  const items = [[0, 'すべて ' + GM_ROWS.length], ...[5,4,3,2,1].map(s => [s, '★' + s + '　' + (counts[s] || 0)])];
+  $('starFilter').innerHTML = items.map(([v, t]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.star === v}">${t}</button>`).join('');
+  $('starFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.star = Number(b.dataset.v); state.shown = PAGE; syncRanking(); }));
+}
+function renderCatFilter(){
+  const items = [['', 'すべて'], ...CATS.map(c => [c.key, c.name, c.shops + '軒'])];
+  $('catFilter').innerHTML = items.map(([v, t, n]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.cat === v}">${gmEsc(t)}${n ? `<small>${n}</small>` : ''}</button>`).join('');
+  $('catFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.cat = b.dataset.v; state.shown = PAGE; syncRanking(); }));
+}
+function renderGenreFilter(){
+  const counts = {}; GM_ROWS.forEach(r => r.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
+  const gs = GM_GENRES.filter(g => g !== 'その他').sort((a, b) => counts[b] - counts[a]).concat(counts['その他'] ? ['その他'] : []);
+  const items = [['', 'すべて'], ...gs.map(g => [g, g, counts[g]])];
+  $('genreFilter').innerHTML = items.map(([v, t, n]) => `<button class="f-tag" data-v="${gmEsc(v)}" aria-pressed="${state.genre === v}">${gmEsc(t)}${n ? `<small>${n}</small>` : ''}</button>`).join('');
+  $('genreFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.genre = b.dataset.v; state.shown = PAGE; syncRanking(); }));
+}
+function syncRanking(){
+  renderStarFilter(); renderCatFilter(); renderGenreFilter();
+  const rows = filterRows();
+  const cat = CATS.find(c => c.key === state.cat);
+  const ac = $('activeCat');
+  if(cat){ ac.classList.add('on'); ac.innerHTML = `<span>カテゴリー：<b>${gmEsc(cat.label)}</b></span><button id="clearCat">解除 ✕</button>`;
+    $('clearCat').addEventListener('click', () => { state.cat = ''; state.shown = PAGE; syncRanking(); }); }
+  else { ac.classList.remove('on'); ac.innerHTML = ''; }
+  const shops = gmDistinctShops(rows);
+  $('rkCount').textContent = GM_ROWS.length + '件';
+  $('rkStatus').textContent = rows.length + '件を表示' + (shops !== rows.length ? '（屋号でまとめると' + shops + '軒）' : '');
+  $('rkList').innerHTML = rows.slice(0, state.shown).map(r => {
+    const cid = RANK_COL[r.n];
+    const th = cid ? `<button type="button" class="rk-thbtn" data-col="${gmEsc(cid)}" aria-label="${gmEsc(r.name)}のコラムを読む">${gmRankThumbHTML(r)}</button>` : gmRankThumbHTML(r);
+    const nm = cid ? `<button type="button" class="rk-go" data-col="${gmEsc(cid)}"><span class="rk-name">${gmEsc(r.name)}</span><i>コラムを読む →</i></button>` : `<span class="rk-name">${gmEsc(r.name)}</span>`;
+    return `<li class="rk s${r.s}">
+      <span class="rk-n">${r.n}</span>
+      ${th}
+      <span>${nm}${r.repeat ? '<span class="rp">再登場</span>' : ''}${r.memo ? `<span class="rk-memo">${gmEsc(r.memo)}</span>` : ''}</span>
+      <span class="rk-genre">${gmEsc(r.genres.join(" / "))}</span>
+      <span class="rk-stars" role="img" aria-label="星${r.s}">${'★'.repeat(r.s)}<i>${'★'.repeat(5 - r.s)}</i></span>
+    </li>`;
+  }).join('') || '<li class="empty">条件に合う店がありません。</li>';
+  $('moreBtn').style.display = rows.length > state.shown ? 'block' : 'none';
+  $('moreBtn').textContent = 'さらに表示する（残り' + (rows.length - state.shown) + '件）';
+}
+$('rkList').addEventListener('click', e => { const b = e.target.closest('[data-col]'); if(b) openArticle(b.dataset.col); });
+$('moreBtn').addEventListener('click', () => { state.shown += PAGE; syncRanking(); });
+$('q').addEventListener('input', e => { state.q = e.target.value; state.shown = PAGE; syncRanking(); });
+
+/* ---------- 記事モーダル ---------- */
+function openArticle(id){
+  const i = COLUMNS.findIndex(c => c.id === id);
+  if(i < 0) return;
+  const col = COLUMNS[i];
+  const prev = COLUMNS[i - 1], next = COLUMNS[i + 1];
+  document.title = col.title + ' | ' + GM_SITE.name;
+  $('metaDesc').setAttribute('content', col.description || DEFAULT_DESC);
+  $('amInner').innerHTML = `
+    ${col.gallery && col.gallery.length ? gmGalleryHTML(col) : `<div class="tri">${gmPhoto(col,'exterior')}${gmPhoto(col,'interior')}${gmPhoto(col,'dish')}</div>`}
+    <div class="am-body">
+      <div class="am-meta"><span>${gmEsc(col.date)}</span><span>・</span><span>約${chars(col)}字</span><span>・</span><span>${gmEsc(readOf(col))}で読める</span></div>
+      ${tagsHTML(col, true)}
+      <h2 class="am-title serif" style="margin-top:18px">${gmEsc(col.title)}</h2>
+      ${col.en ? `<div class="am-en">${gmEsc(col.en)}</div>` : '<div style="height:24px"></div>'}
+      <div class="am-text">${gmRenderBody(col.body)}</div>
+      <div class="am-nav">
+        ${prev ? `<button data-go="${gmEsc(prev.id)}">← 新しいコラム<b>${gmEsc(prev.title)}</b></button>` : '<span></span>'}
+        ${next ? `<button class="nx" data-go="${gmEsc(next.id)}">古いコラム →<b>${gmEsc(next.title)}</b></button>` : '<span></span>'}
+      </div>
+    </div>`;
+  gmGalleryMount($('amInner'), col);
+  $('amInner').querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { openArticle(b.dataset.go); $('articleModal').scrollTop = 0; }));
+  $('articleModal').classList.add('open');
+  $('articleModal').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  $('amClose').focus();
+  if(location.hash !== '#article=' + id) history.pushState({ article:id }, '', '#article=' + id);
+}
+function closeArticle(){
+  $('articleModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.title = DEFAULT_TITLE;
+  $('metaDesc').setAttribute('content', DEFAULT_DESC);
+  if(location.hash.startsWith('#article=')) history.pushState({}, '', location.pathname + location.search);
+}
+$('amClose').addEventListener('click', closeArticle);
+$('articleModal').addEventListener('click', e => { if(e.target.id === 'articleModal') closeArticle(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && $('articleModal').classList.contains('open')) closeArticle(); });
+window.addEventListener('popstate', () => {
+  const m = location.hash.match(/^#article=(.+)$/);
+  if(m) openArticle(m[1]); else { $('articleModal').classList.remove('open'); document.body.style.overflow = ''; }
+});
+
+/* 九つの食卓 → ランキングのカテゴリーへ */
+document.querySelectorAll('.cp[data-cat]').forEach(b => {
+  const key = b.dataset.cat, c = CATS.find(x => x.key === key);
+  b.querySelector('.cp-c').textContent = (c ? c.name + ' ' + c.shops + '軒' : 'すべての店 ' + GM_ROWS.length + '件') + '　ランキングで見る →';
+  b.addEventListener('click', () => {
+    state.cat = c ? key : ''; state.star = 0; state.genre = ''; state.q = ''; state.shown = PAGE;
+    $('q').value = ''; syncRanking();
+    $('ranking').scrollIntoView({ behavior:'smooth' });
+  });
+});
+renderPickup();
+renderColFilter();
+renderColGrid();
+renderCats();
+syncRanking();
+const initMatch = location.hash.match(/^#article=(.+)$/);
+if(initMatch) openArticle(initMatch[1]);
+</script>
+</body>
+</html>
