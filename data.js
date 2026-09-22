@@ -129,7 +129,7 @@ function gmCategoryOf(col){
    店ごとに写真を1枚。登録した写真はブラウザに保存（管理画面の「ランキングのサムネイル」から追加）。
    未登録の店は、ジャンルの一文字を入れた枠で表示する。 */
 const GM_RANK_KEY = 'gm_rank_thumbs_v1';
-const GM_RANK_IMG_SEED = { 1:'media/seoul-grill-s.jpg', 2:'media/haruma-pot-s.jpg', 3:'media/koraku-ramen-s.jpg', 15:'media/daikou-ramen-s.jpg', 20:'media/aichyuin-gyunan-s.jpg', 7:'media/hekto-pizza-s.jpg', 30:'media/pancho-nap-s.jpg' };   // 最初から入っている写真（行番号 → 画像）
+const GM_RANK_IMG_SEED = { 1:'media/seoul-grill-s.jpg', 2:'media/haruma-pot-s.jpg', 3:'media/koraku-ramen-s.jpg', 15:'media/daikou-ramen-s.jpg', 20:'media/aichyuin-gyunan-s.jpg', 7:'media/hekto-pizza-s.jpg', 30:'media/pancho-egg-s.jpg' };   // 最初から入っている写真（行番号 → 画像）
 const GM_GENRE_MARK = { '中華・餃子':'餃', 'そば・うどん':'麺', 'フレンチ・イタリアン':'洋', '焼鳥・鶏':'鶏', '海鮮・市場':'魚', '居酒屋・食堂':'酒', '肉料理':'肉', 'とんかつ・揚げ物':'揚', 'ラーメン':'拉', 'パン':'麦', 'カフェ':'珈', '鮨・うなぎ':'鮨', '韓国':'韓', 'カレー':'辛', 'その他':'食' };
 function gmRankMap(){
   let m; try { m = JSON.parse(localStorage.getItem(GM_RANK_KEY)) || {}; } catch(e){ m = {}; }
@@ -358,16 +358,22 @@ const GM_SEED_COLUMNS = [
   ],
   "thumb": "media/pancho-thumb.jpg",
   "photos": {
-   "exterior": "",
+   "exterior": "media/pancho-sign.jpg",
    "interior": "",
-   "dish": "media/pancho-nap.jpg"
+   "dish": "media/pancho-egg.jpg"
   },
   "gallery": [
    {
     "type": "image",
-    "src": "media/pancho-nap.jpg",
-    "thumb": "media/pancho-nap-s.jpg",
-    "caption": "赤白チェックのテーブルに、太麺のナポリタン。粉チーズが山盛りにのっている。"
+    "src": "media/pancho-egg.jpg",
+    "thumb": "media/pancho-egg-s.jpg",
+    "caption": "目玉焼きをのせたナポリタン。銀色の皿に、たっぷりの麺とソーセージ。"
+   },
+   {
+    "type": "image",
+    "src": "media/pancho-sign.jpg",
+    "thumb": "media/pancho-sign-s.jpg",
+    "caption": "「スパゲッティーのパンチョ」の看板とメニュー。ナポリタンの食品サンプルが並び、値段とトッピングが一覧になっている。"
    }
   ],
   "body": [
