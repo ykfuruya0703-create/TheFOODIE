@@ -127,6 +127,14 @@ section{padding:104px 0;position:relative;z-index:1}
 .con-quote p{font-size:clamp(19px,2.3vw,26px);font-weight:700;line-height:1.75;letter-spacing:.5px}
 .con-quote p em{color:var(--gold2);font-style:normal}
 .con-body{font-size:14px;color:var(--text2);line-height:2}
+.rk-meaning{margin-top:72px;padding-top:56px;border-top:1px solid var(--border)}
+.rkm-title{font-size:clamp(20px,2.4vw,28px);font-weight:700;margin-bottom:14px}
+.rkm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+@media(max-width:768px){.rkm-grid{grid-template-columns:1fr}}
+.rkm-item{background:rgba(16,13,9,0.6);border:1px solid var(--border2);border-radius:3px;padding:28px}
+.rkm-n{font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+.rkm-t{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:.3px}
+.rkm-d{font-size:13px;color:var(--text2);line-height:1.95}
 .cp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
 @media(max-width:900px){.cp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.cp-grid{grid-template-columns:1fr}}
@@ -345,6 +353,23 @@ footer strong{color:var(--text2)}
         <button type="button" class="cp" data-cat="kaishoku"><div class="cp-ico">◆</div><div><div class="cp-t">会食</div><div class="cp-d">大切な相手と、落ち着いて話せる一席。料理も空間も、礼を尽くして選ぶ</div><span class="cp-c"></span></div></button>
         <button type="button" class="cp" data-cat="lunch"><div class="cp-ico">◆</div><div><div class="cp-t">ランチ</div><div class="cp-d">昼の光の中で、気負わず食べる。一日の真ん中に置く、小さなごちそう</div><span class="cp-c"></span></div></button>
         <button type="button" class="cp" data-cat="kokozo"><div class="cp-ico">◆</div><div><div class="cp-t">記念日</div><div class="cp-d">人生の節目に、ここぞという一軒を。料理と時間が、その日を特別にする</div><span class="cp-c"></span></div></button>
+    </div>
+    <div class="rk-meaning">
+      <div class="sec-badge"><span class="tag tag-bronze">Ranking Criteria</span></div>
+      <h3 class="rkm-title serif">ランキングの意味</h3>
+      <p class="con-body">星の数や、有名さでは決めていません。このランキングを並べる基準は、二つだけです。</p>
+      <div class="rkm-grid">
+        <div class="rkm-item">
+          <div class="rkm-n serif">01</div>
+          <div class="rkm-t">絶対また行きたい店</div>
+          <div class="rkm-d">一度きりで満足する店ではなく、「次はいつ行こうか」と、また足が向く店。</div>
+        </div>
+        <div class="rkm-item">
+          <div class="rkm-n serif">02</div>
+          <div class="rkm-t">誰かを連れて行きたい店</div>
+          <div class="rkm-d">自分だけの秘密にしておくのではなく、家族や友人、大切な人に「ここ、いいよ」と勧めたくなる店。</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
