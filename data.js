@@ -384,7 +384,7 @@ const GM_SEED_COLUMNS = [
    "博多グルメ遠征",
    "天ぷら"
   ],
-  "thumb": "media/hirao-thumb.jpg",
+  "thumb": "media/hirao-thumb2.jpg",
   "photos": {
    "exterior": "media/hirao-exterior.jpg",
    "interior": "media/hirao-interior.jpg",
