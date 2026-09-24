@@ -127,6 +127,22 @@ section{padding:104px 0;position:relative;z-index:1}
 .con-quote p{font-size:clamp(19px,2.3vw,26px);font-weight:700;line-height:1.75;letter-spacing:.5px}
 .con-quote p em{color:var(--gold2);font-style:normal}
 .con-body{font-size:14px;color:var(--text2);line-height:2}
+#map .sec-lead{color:var(--text2);font-size:14px;line-height:1.9;margin:14px 0 20px;max-width:640px}
+.map-status{font-size:12px;color:var(--text3);margin-bottom:18px}
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.map-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.map-grid{grid-template-columns:1fr}}
+.map-card{background:rgba(22,18,9,0.6);border:1px solid var(--border);border-radius:3px;padding:20px;transition:border-color .25s}
+.map-card:hover{border-color:var(--border2)}
+.map-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.map-card-title{background:none;border:0;padding:0;color:var(--gold2);font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.3px;cursor:pointer;text-align:left}
+.map-card-title:hover{text-decoration:underline}
+.map-card-count{font-size:11px;color:var(--text3);white-space:nowrap}
+.map-shop-list{display:flex;flex-wrap:wrap;gap:6px}
+.map-shop{background:rgba(0,0,0,0.25);border:1px solid var(--border);border-radius:2px;padding:4px 9px;font-size:11.5px;color:var(--text2);cursor:pointer;line-height:1.5;transition:.2s}
+.map-shop:hover{border-color:var(--gold);color:var(--gold2)}
+.map-shop.has-col{border-color:rgba(201,167,105,.35);color:var(--gold2)}
+.map-shop-more{font-size:11px;color:var(--text3);padding:4px 2px}
 .rk-meaning{margin-top:72px;padding-top:56px;border-top:1px solid var(--border)}
 .rkm-title{font-size:clamp(20px,2.4vw,28px);font-weight:700;margin-bottom:14px}
 .rkm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
@@ -304,6 +320,7 @@ footer strong{color:var(--text2)}
       <a href="#columns">コラム一覧</a>
       <a href="#cats">カテゴリー</a>
       <a href="#ranking">ランキング</a>
+      <a href="#map">MAP</a>
     </nav>
     <div class="hdr-cta"><a href="#ranking" class="btn btn-p">ランキング →</a></div>
   </div>
@@ -433,6 +450,18 @@ footer strong{color:var(--text2)}
     <p class="status" id="rkStatus" aria-live="polite"></p>
     <ol class="rk-list" id="rkList"></ol>
     <button class="btn btn-o btn-lg more" id="moreBtn" style="display:none">さらに表示する</button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="map">
+  <div class="container">
+    <div class="sec-badge"><span class="tag tag-gold">Map</span></div>
+    <h2 class="sec-title serif">エリアで探す</h2>
+    <p class="sec-lead">155件の店を、メモに書かれた地名をもとに、エリアごとにまとめました。エリアの名前を押すと、そのエリアでランキングを絞り込みます。店名を押すと、コラムがあれば開きます。</p>
+    <p class="map-status" id="mapStatus" aria-live="polite"></p>
+    <div class="map-grid" id="mapGrid"></div>
   </div>
 </section>
 
@@ -683,6 +712,75 @@ renderCats();
 syncRanking();
 const initMatch = location.hash.match(/^#article=(.+)$/);
 if(initMatch) openArticle(initMatch[1]);
+</script>
+<script>
+/* ---- MAP（エリア別一覧） ---- */
+const GM_AREAS = [
+  ['ソウル・韓国', ['ソウル','永登浦','東大門']],
+  ['横須賀', ['横須賀','野比','久里浜']],
+  ['川崎', ['川崎']],
+  ['横浜駅・西口', ['横浜駅','ヨドバシ']],
+  ['関内・馬車道・伊勢佐木町', ['関内','馬車道','伊勢佐木町','福富町']],
+  ['野毛', ['野毛']],
+  ['桜木町・みなとみらい', ['桜木町']],
+  ['中華街・元町', ['中華街','元町']],
+  ['南太田・蒔田・阪東橋', ['南太田','蒔田','阪東橋','日ノ出町','吉野町','弘明寺','井土ヶ谷']],
+  ['保土ヶ谷・二俣川・下川井周辺', ['保土ヶ谷','二俣川','下川井','平沼橋','反町','東神奈川','菊名','岡野町']],
+  ['鎌倉・藤沢・茅ヶ崎・湘南', ['鎌倉','藤沢','茅ヶ崎','湘南台','逗子','葉山']],
+  ['小田原・熱海・沼津', ['小田原','熱海','沼津','根府川']],
+  ['三浦・館山・勝浦（海の幸）', ['三崎','館山','勝浦','金田湾']],
+  ['東京（渋谷・目黒・白金ほか）', ['渋谷','目黒','白金','南青山','麻布','表参道','恵比寿','五反田','品川','新橋','神保町','赤坂','西新宿','三軒茶屋','自由が丘','中目黒','梅田']],
+  ['群馬', ['群馬']],
+  ['博多', ['博多']],
+  ['名古屋・浜松', ['名古屋','浜松']],
+  ['山梨・山中湖', ['山梨','山中湖']]
+];
+function gmAreaOf(r){
+  for(const [label, keys] of GM_AREAS){ if(keys.some(k => r.raw.includes(k))) return label; }
+  return 'その他・記載なし';
+}
+function renderMapGrid(){
+  const RANK_COL2 = {}; COLUMNS.forEach(c => { if(c.rank) RANK_COL2[c.rank] = c; });
+  const groups = {};
+  GM_ROWS.forEach(r => { const a = gmAreaOf(r); (groups[a] = groups[a] || []).push(r); });
+  const order = [...GM_AREAS.map(a => a[0]), 'その他・記載なし'].filter(a => groups[a] && groups[a].length);
+  $('mapStatus').textContent = order.length + 'エリア、' + GM_ROWS.length + '件';
+  $('mapGrid').innerHTML = order.map(area => {
+    const rows = groups[area].sort((a, b) => a.n - b.n);
+    const shown = rows.slice(0, 8);
+    const rest = rows.length - shown.length;
+    const chips = shown.map(r => {
+      const col = RANK_COL2[r.n];
+      return col
+        ? `<button type="button" class="map-shop has-col" data-open-col="${gmEsc(col.id)}">${gmEsc(r.name)}</button>`
+        : `<button type="button" class="map-shop" data-map-search="${gmEsc(r.name)}">${gmEsc(r.name)}</button>`;
+    }).join('');
+    const more = rest > 0 ? `<span class="map-shop-more">他${rest}軒</span>` : '';
+    return `<div class="map-card">
+      <div class="map-card-head">
+        <button type="button" class="map-card-title" data-map-area="${gmEsc(area.split('（')[0].split('・')[0])}">${gmEsc(area)}</button>
+        <span class="map-card-count">${rows.length}軒</span>
+      </div>
+      <div class="map-shop-list">${chips}${more}</div>
+    </div>`;
+  }).join('');
+}
+document.addEventListener('click', e => {
+  const colBtn = e.target.closest('[data-open-col]');
+  if(colBtn){ openArticle(colBtn.dataset.openCol); return; }
+  const searchBtn = e.target.closest('[data-map-search]');
+  if(searchBtn){
+    state.q = searchBtn.dataset.mapSearch; state.shown = PAGE; $('q').value = state.q; syncRanking();
+    $('ranking').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  const areaBtn = e.target.closest('[data-map-area]');
+  if(areaBtn){
+    state.q = areaBtn.dataset.mapArea; state.shown = PAGE; $('q').value = state.q; syncRanking();
+    $('ranking').scrollIntoView({ behavior: 'smooth' });
+  }
+});
+renderMapGrid();
 </script>
 </body>
 </html>
