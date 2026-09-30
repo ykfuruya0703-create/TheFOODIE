@@ -72,7 +72,18 @@ nav{display:flex;gap:30px;margin-left:52px}
 nav a{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:1px;transition:.2s;position:relative}
 nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:.3s}
 nav a:hover{color:var(--gold2)}nav a:hover::after{width:100%}
-.hdr-cta{margin-left:auto}
+.hdr-cta{margin-left:auto;display:flex;align-items:center;gap:14px}
+/* 言語切り替え */
+.lang-sw{display:flex;gap:2px;padding:2px;border:1px solid var(--border2);border-radius:2px;background:rgba(10,8,6,.5)}
+.lang-sw button{background:none;border:0;color:var(--text2);font:inherit;font-size:11px;letter-spacing:.5px;padding:5px 9px;border-radius:2px;cursor:pointer;transition:.2s;white-space:nowrap}
+.lang-sw button:hover{color:var(--gold2)}
+.lang-sw button[aria-pressed="true"]{background:var(--gold);color:#140f08;font-weight:700}
+@media(max-width:600px){.hdr-cta .btn{display:none}.logo-text span{display:none}.lang-sw button{padding:5px 7px}}
+html[lang="ko"] body{font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;word-break:keep-all}
+html[lang="ko"] .serif,html[lang="ko"] .am-nav b{font-family:'AppleMyungjo','Nanum Myeongjo','Noto Serif KR',serif}
+html[lang="en"] .serif,html[lang="en"] .am-nav b{font-family:Georgia,'Times New Roman','Hiragino Mincho ProN',serif}
+.am-notice{margin:0 0 26px;padding:14px 16px;border:1px solid var(--border2);border-left:3px solid var(--gold);background:rgba(201,167,105,.06);font-size:12.5px;color:var(--text2);line-height:1.8}
+.rk-orig{font-size:11px;color:var(--text3);margin-left:8px;font-weight:400}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:2px;font-size:11px;font-weight:700;text-decoration:none;transition:all .25s;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:0}
 .btn-o{background:transparent;border:1px solid var(--border2);color:var(--gold2)}
 .btn-o:hover{background:rgba(201,167,105,0.08);border-color:var(--gold)}
@@ -318,14 +329,14 @@ footer strong{color:var(--text2)}
       <div class="logo-text"><b class="serif">THE FOODIE EDIT</b><span>GOURMET COLUMN</span></div>
     </a>
     <nav>
-      <a href="#concept">コンセプト</a>
-      <a href="#pickup">ピックアップ</a>
-      <a href="#columns">コラム一覧</a>
-      <a href="#cats">カテゴリー</a>
-      <a href="#ranking">ランキング</a>
-      <a href="#map">MAP</a>
+      <a href="#concept" data-i18n="nav_concept">コンセプト</a>
+      <a href="#pickup" data-i18n="nav_pickup">ピックアップ</a>
+      <a href="#columns" data-i18n="nav_columns">コラム一覧</a>
+      <a href="#cats" data-i18n="nav_cats">カテゴリー</a>
+      <a href="#ranking" data-i18n="nav_ranking">ランキング</a>
+      <a href="#map" data-i18n="nav_map">MAP</a>
     </nav>
-    <div class="hdr-cta"><a href="#ranking" class="btn btn-p">ランキング →</a></div>
+    <div class="hdr-cta"><div class="lang-sw" id="langSw"></div><a href="#ranking" class="btn btn-p" data-i18n="hdr_ranking">ランキング →</a></div>
   </div>
 </header>
 
@@ -334,11 +345,11 @@ footer strong{color:var(--text2)}
     <div class="hero-grid">
       <div>
         <div class="hero-badge animate-up"><span class="ln"></span>LUXURY FOODIE JOURNAL</div>
-        <h1 class="hero-title serif animate-up d1"><span class="gradient-text">上質という、</span><br>纏う教養。</h1>
-        <p class="hero-sub animate-up d2">自分なりの美味しいもの　フーディーを深く読み解く、<br><strong style="color:var(--gold2)">大人のための食事コラム。</strong></p>
+        <h1 class="hero-title serif animate-up d1" data-i18n-html="hero_title"><span class="gradient-text">上質という、</span><br>纏う教養。</h1>
+        <p class="hero-sub animate-up d2" data-i18n-html="hero_sub">自分なりの美味しいもの　フーディーを深く読み解く、<br><strong style="color:var(--gold2)">大人のための食事コラム。</strong></p>
         <div class="hero-actions animate-up d3">
-          <a href="#columns" class="btn btn-p btn-lg glow">コラムを読む</a>
-          <a href="#ranking" class="btn btn-o btn-lg">ランキング155件 →</a>
+          <a href="#columns" class="btn btn-p btn-lg glow" data-i18n="hero_read">コラムを読む</a>
+          <a href="#ranking" class="btn btn-o btn-lg" data-i18n="hero_rank">ランキング155件 →</a>
         </div>
         <div class="hero-stats animate-up d4">
           <div><div class="hs-val gradient-text" id="stRows">155</div><div class="hs-label">Ranking Rows</div></div>
@@ -357,37 +368,37 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div class="con-grid">
       <div>
-        <div class="sec-badge"><span class="tag tag-gold">Philosophy · 定義</span></div>
-        <div class="con-quote"><p class="serif">フーディーは、もはや<br><em>「食通」ではない。</em></p></div>
+        <div class="sec-badge"><span class="tag tag-gold" data-i18n="con_badge">Philosophy · 定義</span></div>
+        <div class="con-quote"><p class="serif" data-i18n-html="con_quote">フーディーは、もはや<br><em>「食通」ではない。</em></p></div>
       </div>
-      <p class="con-body" style="align-self:end">有名店の数でも、星の数でもない。フーディーとは、自分なりの「おいしい」を、自分の言葉で持っている人のことです。LUXURY FOODIE JOURNALは、フーディーを「食べ歩きの達人」から「食卓に、知性と審美眼を映す人」へと読み替える食事コラムです。同じ一皿でも、誰と囲むかで、おいしさの意味は変わります。家族、仲間、おひとり様、友人と差し飲み、デート・夫婦で行く、ガッツリ食べる、会食、ランチ、そして記念日。九つの食卓から、大人が本当に知るべき"上質"を紐解きます。</p>
-      <p class="con-body" style="margin-top:14px"><strong style="color:var(--gold2)">「また食べたい」が残ること。それこそが、好きな店の条件です。</strong></p>
+      <p class="con-body" style="align-self:end" data-i18n="con_body">有名店の数でも、星の数でもない。フーディーとは、自分なりの「おいしい」を、自分の言葉で持っている人のことです。LUXURY FOODIE JOURNALは、フーディーを「食べ歩きの達人」から「食卓に、知性と審美眼を映す人」へと読み替える食事コラムです。同じ一皿でも、誰と囲むかで、おいしさの意味は変わります。家族、仲間、おひとり様、友人と差し飲み、デート・夫婦で行く、ガッツリ食べる、会食、ランチ、そして記念日。九つの食卓から、大人が本当に知るべき"上質"を紐解きます。</p>
+      <p class="con-body" style="margin-top:14px"><strong style="color:var(--gold2)" data-i18n="con_strong">「また食べたい」が残ること。それこそが、好きな店の条件です。</strong></p>
     </div>
     <div class="cp-grid">
-        <button type="button" class="cp" data-cat="family"><div class="cp-ico">◆</div><div><div class="cp-t">家族</div><div class="cp-d">同じ卓を囲み、同じ時間を持ち帰る。定番が、やがて記憶になる</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="nakama"><div class="cp-ico">◆</div><div><div class="cp-t">仲間</div><div class="cp-d">大皿を分け合い、酒を酌み交わす。一人では届かない、にぎやかなおいしさ</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="hitori"><div class="cp-ico">◆</div><div><div class="cp-t">おひとり様</div><div class="cp-d">誰にも合わせず、自分の速度で食べる。一皿と向き合う贅沢</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="futari"><div class="cp-ico">◆</div><div><div class="cp-t">友人と差し飲み</div><div class="cp-d">気の置けない一人と、差し向かいで。語らいの合間に、もう一杯</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="date"><div class="cp-ico">◆</div><div><div class="cp-t">デート・夫婦で行く</div><div class="cp-d">向かい合う二人の距離が、味の一部になる。会話まで含めて選ぶ一軒</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="gatsuri"><div class="cp-ico">◆</div><div><div class="cp-t">ガッツリ食べる</div><div class="cp-d">上品に少しずつではなく、腹いっぱい。量まで含めて、おいしさと呼ぶ</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="kaishoku"><div class="cp-ico">◆</div><div><div class="cp-t">会食</div><div class="cp-d">大切な相手と、落ち着いて話せる一席。料理も空間も、礼を尽くして選ぶ</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="lunch"><div class="cp-ico">◆</div><div><div class="cp-t">ランチ</div><div class="cp-d">昼の光の中で、気負わず食べる。一日の真ん中に置く、小さなごちそう</div><span class="cp-c"></span></div></button>
-        <button type="button" class="cp" data-cat="kokozo"><div class="cp-ico">◆</div><div><div class="cp-t">記念日</div><div class="cp-d">人生の節目に、ここぞという一軒を。料理と時間が、その日を特別にする</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="family"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_family_t">家族</div><div class="cp-d" data-i18n="cp_family_d">同じ卓を囲み、同じ時間を持ち帰る。定番が、やがて記憶になる</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="nakama"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_nakama_t">仲間</div><div class="cp-d" data-i18n="cp_nakama_d">大皿を分け合い、酒を酌み交わす。一人では届かない、にぎやかなおいしさ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="hitori"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_hitori_t">おひとり様</div><div class="cp-d" data-i18n="cp_hitori_d">誰にも合わせず、自分の速度で食べる。一皿と向き合う贅沢</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="futari"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_futari_t">友人と差し飲み</div><div class="cp-d" data-i18n="cp_futari_d">気の置けない一人と、差し向かいで。語らいの合間に、もう一杯</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="date"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_date_t">デート・夫婦で行く</div><div class="cp-d" data-i18n="cp_date_d">向かい合う二人の距離が、味の一部になる。会話まで含めて選ぶ一軒</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="gatsuri"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_gatsuri_t">ガッツリ食べる</div><div class="cp-d" data-i18n="cp_gatsuri_d">上品に少しずつではなく、腹いっぱい。量まで含めて、おいしさと呼ぶ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="kaishoku"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_kaishoku_t">会食</div><div class="cp-d" data-i18n="cp_kaishoku_d">大切な相手と、落ち着いて話せる一席。料理も空間も、礼を尽くして選ぶ</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="lunch"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_lunch_t">ランチ</div><div class="cp-d" data-i18n="cp_lunch_d">昼の光の中で、気負わず食べる。一日の真ん中に置く、小さなごちそう</div><span class="cp-c"></span></div></button>
+        <button type="button" class="cp" data-cat="kokozo"><div class="cp-ico">◆</div><div><div class="cp-t" data-i18n="cp_kokozo_t">記念日</div><div class="cp-d" data-i18n="cp_kokozo_d">人生の節目に、ここぞという一軒を。料理と時間が、その日を特別にする</div><span class="cp-c"></span></div></button>
     </div>
     <div class="rk-meaning">
       <div class="sec-badge"><span class="tag tag-bronze">Ranking Criteria</span></div>
-      <h3 class="rkm-title serif">ランキングの意味</h3>
-      <p class="con-body">星の数や、有名さでは決めていません。このランキングを並べる基準は、二つだけです。</p>
+      <h3 class="rkm-title serif" data-i18n="rkm_title">ランキングの意味</h3>
+      <p class="con-body" data-i18n="rkm_body">星の数や、有名さでは決めていません。このランキングを並べる基準は、二つだけです。</p>
       <div class="rkm-grid">
         <div class="rkm-item">
           <div class="rkm-n serif">01</div>
-          <div class="rkm-t">絶対また行きたい店</div>
-          <div class="rkm-d">一度きりで満足する店ではなく、「次はいつ行こうか」と、また足が向く店。</div>
+          <div class="rkm-t" data-i18n="rkm1_t">絶対また行きたい店</div>
+          <div class="rkm-d" data-i18n="rkm1_d">一度きりで満足する店ではなく、「次はいつ行こうか」と、また足が向く店。</div>
         </div>
         <div class="rkm-item">
           <div class="rkm-n serif">02</div>
-          <div class="rkm-t">誰かを連れて行きたい店</div>
-          <div class="rkm-d">自分だけの秘密にしておくのではなく、家族や友人、大切な人に「ここ、いいよ」と勧めたくなる店。</div>
+          <div class="rkm-t" data-i18n="rkm2_t">誰かを連れて行きたい店</div>
+          <div class="rkm-d" data-i18n="rkm2_d">自分だけの秘密にしておくのではなく、家族や友人、大切な人に「ここ、いいよ」と勧めたくなる店。</div>
         </div>
       </div>
     </div>
@@ -400,8 +411,8 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div class="sec-hd">
       <div class="sec-badge"><span class="tag tag-gold">Editor's Pickup</span></div>
-      <h2 class="sec-title serif">今週の一本</h2>
-      <p class="sec-desc">編集部が選ぶ、いま読むべきラグジュアリーフーディーの一篇。</p>
+      <h2 class="sec-title serif" data-i18n="pu_title">今週の一本</h2>
+      <p class="sec-desc" data-i18n="pu_desc">編集部が選ぶ、いま読むべきラグジュアリーフーディーの一篇。</p>
     </div>
     <div id="pickupCard"></div>
   </div>
@@ -413,8 +424,8 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div class="sec-hd">
       <div class="sec-badge"><span class="tag tag-bronze">Column Archive</span></div>
-      <h2 class="sec-title serif">コラム一覧<small id="colCount"></small></h2>
-      <p class="sec-desc">カテゴリーで絞り込んで、じっくりお読みください。</p>
+      <h2 class="sec-title serif"><span data-i18n="col_title">コラム一覧</span><small id="colCount"></small></h2>
+      <p class="sec-desc" data-i18n="col_desc">カテゴリーで絞り込んで、じっくりお読みください。</p>
     </div>
     <div class="filter-tags" id="colFilter"></div>
     <div class="col-grid" id="colGrid"></div>
@@ -427,8 +438,8 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div class="sec-hd">
       <div class="sec-badge"><span class="tag tag-gold">Categories</span></div>
-      <h2 class="sec-title serif">カテゴリー<small id="catCount"></small></h2>
-      <p class="sec-desc">食べに行く場面ごとに、155件を振り分けました。1軒が複数の場面に入ることもあります。数はランキングから自動で数え、押すとその店だけに絞り込みます。</p>
+      <h2 class="sec-title serif"><span data-i18n="cat_title">カテゴリー</span><small id="catCount"></small></h2>
+      <p class="sec-desc" data-i18n="cat_desc">食べに行く場面ごとに、155件を振り分けました。1軒が複数の場面に入ることもあります。数はランキングから自動で数え、押すとその店だけに絞り込みます。</p>
     </div>
     <div class="guide-grid" id="catGrid"></div>
   </div>
@@ -440,14 +451,14 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div class="sec-hd">
       <div class="sec-badge"><span class="tag tag-bronze">Full Ranking</span></div>
-      <h2 class="sec-title serif">ランキング<small id="rkCount"></small></h2>
-      <p class="sec-desc">スマホのメモを、順位も表記のゆれもそのまま並べました。ジャンルはメモの書き方からの分類です。同じ屋号が二度出てくる行には「再登場」の印をつけています。</p>
+      <h2 class="sec-title serif"><span data-i18n="rk_title">ランキング</span><small id="rkCount"></small></h2>
+      <p class="sec-desc" data-i18n="rk_desc">スマホのメモを、順位も表記のゆれもそのまま並べました。ジャンルはメモの書き方からの分類です。同じ屋号が二度出てくる行には「再登場」の印をつけています。</p>
     </div>
-    <div class="fl-row"><span class="fl-lb">星</span><div class="filter-tags" id="starFilter" role="group" aria-label="星の数で絞り込む"></div></div>
-    <div class="fl-row"><span class="fl-lb">カテゴリー</span><div class="filter-tags" id="catFilter" role="group" aria-label="カテゴリーで絞り込む"></div></div>
-    <div class="fl-row"><span class="fl-lb">ジャンル</span><div class="filter-tags" id="genreFilter" role="group" aria-label="ジャンルで絞り込む"></div></div>
+    <div class="fl-row"><span class="fl-lb" data-i18n="fl_star">星</span><div class="filter-tags" id="starFilter" role="group" aria-label="星の数で絞り込む" data-i18n-aria="aria_star"></div></div>
+    <div class="fl-row"><span class="fl-lb" data-i18n="fl_cat">カテゴリー</span><div class="filter-tags" id="catFilter" role="group" aria-label="カテゴリーで絞り込む" data-i18n-aria="aria_cat"></div></div>
+    <div class="fl-row"><span class="fl-lb" data-i18n="fl_genre">ジャンル</span><div class="filter-tags" id="genreFilter" role="group" aria-label="ジャンルで絞り込む" data-i18n-aria="aria_genre"></div></div>
     <div class="bar">
-      <input type="search" id="q" placeholder="店名・街の名前で探す（例：野毛、餃子）" aria-label="店名・街の名前で検索">
+      <input type="search" id="q" placeholder="店名・街の名前で探す（例：野毛、餃子）" aria-label="店名・街の名前で検索" data-i18n-ph="q_ph" data-i18n-aria="q_aria">
     </div>
     <div class="activecat" id="activeCat"></div>
     <p class="status" id="rkStatus" aria-live="polite"></p>
@@ -461,8 +472,8 @@ footer strong{color:var(--text2)}
 <section id="map">
   <div class="container">
     <div class="sec-badge"><span class="tag tag-gold">Map</span></div>
-    <h2 class="sec-title serif">エリアで探す</h2>
-    <p class="sec-lead">155件の店を、メモに書かれた地名をもとに、エリアごとにまとめました。エリアの名前を押すと、そのエリアでランキングを絞り込みます。店名を押すと、コラムがあれば開きます。</p>
+    <h2 class="sec-title serif" data-i18n="map_title">エリアで探す</h2>
+    <p class="sec-lead" data-i18n="map_lead">155件の店を、メモに書かれた地名をもとに、エリアごとにまとめました。エリアの名前を押すと、そのエリアでランキングを絞り込みます。店名を押すと、コラムがあれば開きます。</p>
     <p class="map-status" id="mapStatus" aria-live="polite"></p>
     <div class="map-grid" id="mapGrid"></div>
   </div>
@@ -473,35 +484,52 @@ footer strong{color:var(--text2)}
 <section id="cta">
   <div class="container">
     <div style="display:inline-block;margin-bottom:24px"><span class="tag tag-gold">Membership</span></div>
-    <h2 class="cta-t serif">上質を知る者だけに、<br><span class="gradient-text">先んじて届ける。</span></h2>
-    <p class="cta-d">THE FOODIE EDIT 会員限定で、新着コラムと限定インタビューをいち早くお届けします。</p>
-    <a href="#columns" class="btn btn-p btn-lg glow">コラムに戻る</a>
+    <h2 class="cta-t serif" data-i18n-html="cta_title">上質を知る者だけに、<br><span class="gradient-text">先んじて届ける。</span></h2>
+    <p class="cta-d" data-i18n="cta_desc">THE FOODIE EDIT 会員限定で、新着コラムと限定インタビューをいち早くお届けします。</p>
+    <a href="#columns" class="btn btn-p btn-lg glow" data-i18n="cta_btn">コラムに戻る</a>
   </div>
 </section>
 
 <footer>
   <p><strong class="serif">LUXURY FOODIE JOURNAL</strong></p>
-  <p style="margin-top:6px">自分なりの美味しいもの、フーディーを深く読み解く。</p>
+  <p style="margin-top:6px" data-i18n="ft_line">自分なりの美味しいもの、フーディーを深く読み解く。</p>
   <p style="margin-top:6px">© 2026 LUXURY FOODIE JOURNAL. All rights reserved.</p>
-  <p style="margin-top:10px"><a href="admin.html" rel="nofollow" style="color:var(--text3);font-size:11px;text-decoration:none;letter-spacing:1px">編集者ログイン</a></p>
+  <p style="margin-top:10px"><a href="admin.html" rel="nofollow" style="color:var(--text3);font-size:11px;text-decoration:none;letter-spacing:1px" data-i18n="ft_login">編集者ログイン</a></p>
 </footer>
 
-<div class="article-modal" id="articleModal" role="dialog" aria-modal="true" aria-label="コラム本文">
-  <button class="am-close" id="amClose" aria-label="閉じる">✕</button>
+<div class="article-modal" id="articleModal" role="dialog" aria-modal="true" aria-label="コラム本文" data-i18n-aria="am_aria">
+  <button class="am-close" id="amClose" aria-label="閉じる" data-i18n-aria="close">✕</button>
   <div class="am-inner" id="amInner"></div>
 </div>
 
+<script src="i18n.js"></script>
 <script src="media.js"></script>
 <script src="data.js"></script>
+<script src="i18n-columns.js"></script>
 <script>
-const COLUMNS = gmGetAllColumns();
+/* ---------- 多言語：静的な文言と切り替えボタン ---------- */
+const I18N_VARS = { rows: GM_ROWS.length };
+gmApplyStatic(document, I18N_VARS);
+gmMountLangSwitch(document.getElementById('langSw'));
+document.getElementById('metaDesc').setAttribute('content', gmT('meta_desc', I18N_VARS));
+
+const COLUMNS = gmGetAllColumns().map(gmLocalizeColumn);
 const CATS = gmCategoryStats();
 const DEFAULT_TITLE = document.getElementById('pageTitle').textContent;
 const DEFAULT_DESC = document.getElementById('metaDesc').getAttribute('content');
-const fmt = n => n.toLocaleString('ja-JP');
+const fmt = n => gmFmt(n);
 const $ = id => document.getElementById(id);
 const chars = col => fmt(Math.round(gmCharCount(col) / 100) * 100);
 const readOf = col => col.read || gmReadMinutes(col) + '分';
+const readMin = col => { const m = String(col.read || '').match(/\d+/); return m ? Number(m[0]) : gmReadMinutes(col); };
+/* 日付・字数・読了時間の並び（英韓は字数を出さない） */
+function metaHTML(col){
+  if(GM_LANG === 'ja') return `<span>${gmEsc(col.date)}</span><span>・</span><span>約${chars(col)}字</span><span>・</span><span>${gmEsc(readOf(col))}で読める</span>`;
+  return `<span>${gmEsc(col.date)}</span><span>・</span><span>${gmEsc(gmT('read_label', { n: readMin(col) }))}</span>`;
+}
+const readLabel = col => GM_LANG === 'ja' ? gmT('read_label', { t: readOf(col) }) : gmT('read_label', { n: readMin(col) });
+const rowName = r => gmRowT(r).name;
+const rowMemo = r => gmRowT(r).memo;
 
 $('stRows').textContent = GM_ROWS.length;
 $('stCols').textContent = COLUMNS.length;
@@ -509,23 +537,23 @@ $('stCats').textContent = CATS.length;
 
 /* ---------- ピックアップ ---------- */
 function tagsHTML(col, withTags){
-  const cat = gmCategoryOf(col), mode = GM_MODES[col.mode];
+  const cat = gmCategoryOf(col);
   const extra = withTags && col.tags ? col.tags.map(t => `<span class="sub-tag">${gmEsc(t)}</span>`).join('') : '';
   return `<div class="card-tags"><span class="cat-tag tone-${cat.tone}">${gmEsc(cat.label)}</span>${extra}</div>`;
 }
 function renderPickup(){
   const col = COLUMNS[0];
-  if(!col){ $('pickupCard').innerHTML = '<p class="sec-desc">まだコラムがありません。</p>'; return; }
+  if(!col){ $('pickupCard').innerHTML = `<p class="sec-desc">${gmEsc(gmT('no_cols'))}</p>`; return; }
   const mosaic = gmCardMedia(col);
   const card = document.createElement('div');
   card.className = 'pickup-card';
   card.innerHTML = `${mosaic}
     <div class="pickup-body">
-      <div class="pu-meta"><span>${gmEsc(col.date)}</span><span>・</span><span>約${chars(col)}字</span><span>・</span><span>${gmEsc(readOf(col))}で読める</span></div>
+      <div class="pu-meta">${metaHTML(col)}</div>
       <div style="margin-bottom:14px">${tagsHTML(col, true)}</div>
       <h3 class="pu-title serif">${gmEsc(col.title)}</h3>
       <p class="pu-excerpt">${gmEsc(col.excerpt)}</p>
-      <span class="pu-link">全文を読む →</span>
+      <span class="pu-link">${gmEsc(gmT('read_full'))}</span>
     </div>`;
   card.addEventListener('click', () => openArticle(col.id));
   $('pickupCard').innerHTML = '';
@@ -534,9 +562,9 @@ function renderPickup(){
   const cat = gmCategoryOf(col);
   $('heroPickupCard').innerHTML = `${mosaic}
     <div class="hc-body">
-      <div class="hc-lbl">最新のコラム</div>
+      <div class="hc-lbl">${gmEsc(gmT('latest'))}</div>
       <div class="hc-t serif">${gmEsc(col.title)}</div>
-      <div class="hc-tags"><span class="hc-tag">${gmEsc(cat.label)}</span><span class="hc-tag">${gmEsc(readOf(col))}</span><span class="hc-tag">${gmEsc(col.date)}</span></div>
+      <div class="hc-tags"><span class="hc-tag">${gmEsc(cat.label)}</span><span class="hc-tag">${gmEsc(GM_LANG === 'ja' ? readOf(col) : readLabel(col))}</span><span class="hc-tag">${gmEsc(col.date)}</span></div>
     </div>`;
   $('heroPickupCard').addEventListener('click', () => openArticle(col.id));
 }
@@ -546,45 +574,45 @@ let colFilter = '';
 function renderColFilter(){
   const labels = [];
   COLUMNS.forEach(c => { const l = gmCategoryOf(c).label; if(!labels.includes(l)) labels.push(l); });
-  const items = [['', 'すべて ' + COLUMNS.length], ...labels.map(l => [l, l])];
+  const items = [['', gmT('all') + ' ' + COLUMNS.length], ...labels.map(l => [l, l])];
   $('colFilter').innerHTML = items.map(([v, t]) => `<button class="f-tag" data-v="${gmEsc(v)}" aria-pressed="${v === colFilter}">${gmEsc(t)}</button>`).join('');
   $('colFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { colFilter = b.dataset.v; renderColFilter(); renderColGrid(); }));
 }
 function renderColGrid(){
   const list = colFilter ? COLUMNS.filter(c => gmCategoryOf(c).label === colFilter) : COLUMNS;
   $('colGrid').innerHTML = list.map(col => `
-    <article class="col-card" tabindex="0" role="button" data-id="${gmEsc(col.id)}" aria-label="${gmEsc(col.title)}を読む">
-      ${col.id === COLUMNS[0].id ? '<span class="newbadge">NEW 最新</span>' : ''}
+    <article class="col-card" tabindex="0" role="button" data-id="${gmEsc(col.id)}" aria-label="${gmEsc(gmT('read_aria', { title: col.title }))}">
+      ${col.id === COLUMNS[0].id ? `<span class="newbadge">${gmEsc(gmT('new_badge'))}</span>` : ''}
       ${gmCardMedia(col)}
       <div class="col-body">
         ${tagsHTML(col)}
-        <div class="col-meta"><span>${gmEsc(col.date)}</span><span>約${chars(col)}字</span></div>
+        <div class="col-meta"><span>${gmEsc(col.date)}</span>${GM_LANG === 'ja' ? `<span>約${chars(col)}字</span>` : ''}</div>
         <div class="col-title serif">${gmEsc(col.title)}</div>
         <div class="col-excerpt">${gmEsc(col.excerpt)}</div>
-        <div class="col-read">${gmEsc(readOf(col))}で読める →</div>
-      </div></article>`).join('') || '<p class="empty">該当するコラムはまだありません。</p>';
+        <div class="col-read">${gmEsc(readLabel(col))} →</div>
+      </div></article>`).join('') || `<p class="empty">${gmEsc(gmT('no_match_cols'))}</p>`;
   $('colGrid').querySelectorAll('.col-card').forEach(el => {
     el.addEventListener('click', () => openArticle(el.dataset.id));
     el.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openArticle(el.dataset.id); } });
   });
-  $('colCount').textContent = COLUMNS.length + '本';
+  $('colCount').textContent = gmT('col_count', { n: COLUMNS.length });
 }
 
 /* ---------- カテゴリー ---------- */
 function renderCats(){
-  $('catCount').textContent = CATS.length + '種';
+  $('catCount').textContent = gmT('cat_count', { n: CATS.length });
   $('catGrid').innerHTML = CATS.map((c, i) => {
     const has = COLUMNS.some(x => x.catKey === c.key);
     return `<button class="guide" data-key="${c.key}">
       <div class="guide-n">${String(i + 1).padStart(2, '0')}</div>
-      <div class="guide-i tone-${c.tone}">${c.shops}<small>軒</small></div>
+      <div class="guide-i tone-${c.tone}">${c.shops}<small>${gmEsc(gmT('shops_unit'))}</small></div>
       <div class="guide-l serif">${gmEsc(c.name)}</div>
       <div class="guide-d">${gmEsc(c.desc)}</div>
-      ${has ? '<div class="guide-go">コラムあり</div>' : ''}
+      ${has ? `<div class="guide-go">${gmEsc(gmT('has_col'))}</div>` : ''}
     </button>`;
   }).join('');
   $('catGrid').querySelectorAll('.guide').forEach(b => b.addEventListener('click', () => {
-    state.cat = b.dataset.key; state.star = 0; state.genre = ''; state.q = ''; state.shown = PAGE;
+    state.cat = b.dataset.key; state.star = 0; state.genre = ''; state.q = ''; state.area = ''; state.shown = PAGE;
     $('q').value = '';
     syncRanking();
     $('ranking').scrollIntoView({ behavior:'smooth' });
@@ -595,8 +623,10 @@ function renderCats(){
 const RANK_COL = {};
 COLUMNS.forEach(c => { if(c.rank) RANK_COL[c.rank] = c.id; });
 const PAGE = 40;
-const state = { star:0, genre:'', q:'', cat:'', shown:PAGE };
+const state = { star:0, genre:'', q:'', cat:'', area:'', shown:PAGE };
 const norm = s => String(s).normalize('NFKC').toLowerCase();
+/* 検索は日本語の原文と、表示中の言語の訳の両方を対象にする */
+const hay = r => norm(r.raw + ' ' + r.genres.join(' ') + (GM_LANG === 'ja' ? '' : ' ' + rowName(r) + ' ' + rowMemo(r) + ' ' + r.genres.map(gmGenre).join(' ')));
 function filterRows(){
   const cat = CATS.find(c => c.key === state.cat);
   const q = norm(state.q).trim();
@@ -604,23 +634,24 @@ function filterRows(){
     (!state.star || r.s === state.star) &&
     (!state.genre || r.genres.includes(state.genre)) &&
     (!cat || cat.match(r)) &&
-    (!q || norm(r.raw + ' ' + r.genres.join(' ')).includes(q)));
+    (!state.area || (typeof gmAreaOf === 'function' && gmAreaOf(r) === state.area)) &&
+    (!q || hay(r).includes(q)));
 }
 function renderStarFilter(){
   const counts = {}; GM_ROWS.forEach(r => counts[r.s] = (counts[r.s] || 0) + 1);
-  const items = [[0, 'すべて ' + GM_ROWS.length], ...[5,4,3,2,1].map(s => [s, '★' + s + '　' + (counts[s] || 0)])];
-  $('starFilter').innerHTML = items.map(([v, t]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.star === v}">${t}</button>`).join('');
+  const items = [[0, gmT('all') + ' ' + GM_ROWS.length], ...[5,4,3,2,1].map(s => [s, '★' + s + '　' + (counts[s] || 0)])];
+  $('starFilter').innerHTML = items.map(([v, t]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.star === v}">${gmEsc(t)}</button>`).join('');
   $('starFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.star = Number(b.dataset.v); state.shown = PAGE; syncRanking(); }));
 }
 function renderCatFilter(){
-  const items = [['', 'すべて'], ...CATS.map(c => [c.key, c.name, c.shops + '軒'])];
-  $('catFilter').innerHTML = items.map(([v, t, n]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.cat === v}">${gmEsc(t)}${n ? `<small>${n}</small>` : ''}</button>`).join('');
+  const items = [['', gmT('all')], ...CATS.map(c => [c.key, c.name, gmShopsN(c.shops)])];
+  $('catFilter').innerHTML = items.map(([v, t, n]) => `<button class="f-tag" data-v="${v}" aria-pressed="${state.cat === v}">${gmEsc(t)}${n ? `<small>${gmEsc(n)}</small>` : ''}</button>`).join('');
   $('catFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.cat = b.dataset.v; state.shown = PAGE; syncRanking(); }));
 }
 function renderGenreFilter(){
   const counts = {}; GM_ROWS.forEach(r => r.genres.forEach(g => counts[g] = (counts[g] || 0) + 1));
   const gs = GM_GENRES.filter(g => g !== 'その他').sort((a, b) => counts[b] - counts[a]).concat(counts['その他'] ? ['その他'] : []);
-  const items = [['', 'すべて'], ...gs.map(g => [g, g, counts[g]])];
+  const items = [['', gmT('all')], ...gs.map(g => [g, gmGenre(g), counts[g]])];
   $('genreFilter').innerHTML = items.map(([v, t, n]) => `<button class="f-tag" data-v="${gmEsc(v)}" aria-pressed="${state.genre === v}">${gmEsc(t)}${n ? `<small>${n}</small>` : ''}</button>`).join('');
   $('genreFilter').querySelectorAll('.f-tag').forEach(b => b.addEventListener('click', () => { state.genre = b.dataset.v; state.shown = PAGE; syncRanking(); }));
 }
@@ -629,26 +660,32 @@ function syncRanking(){
   const rows = filterRows();
   const cat = CATS.find(c => c.key === state.cat);
   const ac = $('activeCat');
-  if(cat){ ac.classList.add('on'); ac.innerHTML = `<span>カテゴリー：<b>${gmEsc(cat.label)}</b></span><button id="clearCat">解除 ✕</button>`;
-    $('clearCat').addEventListener('click', () => { state.cat = ''; state.shown = PAGE; syncRanking(); }); }
-  else { ac.classList.remove('on'); ac.innerHTML = ''; }
+  const chips = [];
+  if(cat) chips.push(`<span>${gmEsc(gmT('cat_active'))}<b>${gmEsc(cat.label)}</b></span><button data-clear="cat">${gmEsc(gmT('clear'))}</button>`);
+  if(state.area) chips.push(`<span>${gmEsc(gmT('area_active'))}<b>${gmEsc(gmArea(state.area))}</b></span><button data-clear="area">${gmEsc(gmT('clear'))}</button>`);
+  if(chips.length){
+    ac.classList.add('on'); ac.innerHTML = chips.join('');
+    ac.querySelectorAll('[data-clear]').forEach(b => b.addEventListener('click', () => { state[b.dataset.clear] = ''; state.shown = PAGE; syncRanking(); }));
+  } else { ac.classList.remove('on'); ac.innerHTML = ''; }
   const shops = gmDistinctShops(rows);
-  $('rkCount').textContent = GM_ROWS.length + '件';
-  $('rkStatus').textContent = rows.length + '件を表示' + (shops !== rows.length ? '（屋号でまとめると' + shops + '軒）' : '');
+  $('rkCount').textContent = GM_LANG === 'ja' ? GM_ROWS.length + '件' : ' ' + GM_ROWS.length;
+  $('rkStatus').textContent = gmT('rk_status', { n: rows.length }) + (shops !== rows.length ? gmT('rk_status_shops', { m: shops }) : '');
   $('rkList').innerHTML = rows.slice(0, state.shown).map(r => {
     const cid = RANK_COL[r.n];
-    const th = cid ? `<button type="button" class="rk-thbtn" data-col="${gmEsc(cid)}" aria-label="${gmEsc(r.name)}のコラムを読む">${gmRankThumbHTML(r)}</button>` : gmRankThumbHTML(r);
-    const nm = cid ? `<button type="button" class="rk-go" data-col="${gmEsc(cid)}"><span class="rk-name">${gmEsc(r.name)}</span><i>コラムを読む →</i></button>` : `<span class="rk-name">${gmEsc(r.name)}</span>`;
+    const t = gmRowT(r);
+    const orig = t.orig && t.orig !== t.name ? `<span class="rk-orig" lang="ja">${gmEsc(t.orig)}</span>` : '';
+    const th = cid ? `<button type="button" class="rk-thbtn" data-col="${gmEsc(cid)}" aria-label="${gmEsc(gmT('col_aria', { name: t.name }))}">${gmRankThumbHTML(r)}</button>` : gmRankThumbHTML(r);
+    const nm = cid ? `<button type="button" class="rk-go" data-col="${gmEsc(cid)}"><span class="rk-name">${gmEsc(t.name)}${orig}</span><i>${gmEsc(gmT('read_col'))}</i></button>` : `<span class="rk-name">${gmEsc(t.name)}${orig}</span>`;
     return `<li class="rk s${r.s}">
       <span class="rk-n">${r.n}</span>
       ${th}
-      <span>${nm}${r.repeat ? '<span class="rp">再登場</span>' : ''}${r.memo ? `<span class="rk-memo">${gmEsc(r.memo)}</span>` : ''}</span>
-      <span class="rk-genre">${gmEsc(r.genres.join(" / "))}</span>
-      <span class="rk-stars" role="img" aria-label="星${r.s}">${'★'.repeat(r.s)}<i>${'★'.repeat(5 - r.s)}</i></span>
+      <span>${nm}${r.repeat ? `<span class="rp">${gmEsc(gmT('repeat'))}</span>` : ''}${t.memo ? `<span class="rk-memo">${gmEsc(t.memo)}</span>` : ''}</span>
+      <span class="rk-genre">${gmEsc(r.genres.map(gmGenre).join(" / "))}</span>
+      <span class="rk-stars" role="img" aria-label="${gmEsc(gmT('stars_aria', { n: r.s }))}">${'★'.repeat(r.s)}<i>${'★'.repeat(5 - r.s)}</i></span>
     </li>`;
-  }).join('') || '<li class="empty">条件に合う店がありません。</li>';
+  }).join('') || `<li class="empty">${gmEsc(gmT('no_rows'))}</li>`;
   $('moreBtn').style.display = rows.length > state.shown ? 'block' : 'none';
-  $('moreBtn').textContent = 'さらに表示する（残り' + (rows.length - state.shown) + '件）';
+  $('moreBtn').textContent = gmT('more', { n: rows.length - state.shown });
 }
 $('rkList').addEventListener('click', e => { const b = e.target.closest('[data-col]'); if(b) openArticle(b.dataset.col); });
 $('moreBtn').addEventListener('click', () => { state.shown += PAGE; syncRanking(); });
@@ -662,17 +699,19 @@ function openArticle(id){
   const prev = COLUMNS[i - 1], next = COLUMNS[i + 1];
   document.title = col.title + ' | ' + GM_SITE.name;
   $('metaDesc').setAttribute('content', col.description || DEFAULT_DESC);
+  const notice = GM_LANG !== 'ja' && col.untranslated ? `<p class="am-notice">${gmEsc(gmT('untranslated'))}</p>` : '';
   $('amInner').innerHTML = `
     ${col.gallery && col.gallery.length ? gmGalleryHTML(col) : `<div class="tri">${gmPhoto(col,'exterior')}${gmPhoto(col,'interior')}${gmPhoto(col,'dish')}</div>`}
     <div class="am-body">
-      <div class="am-meta"><span>${gmEsc(col.date)}</span><span>・</span><span>約${chars(col)}字</span><span>・</span><span>${gmEsc(readOf(col))}で読める</span></div>
+      <div class="am-meta">${metaHTML(col)}</div>
       ${tagsHTML(col, true)}
       <h2 class="am-title serif" style="margin-top:18px">${gmEsc(col.title)}</h2>
       ${col.en ? `<div class="am-en">${gmEsc(col.en)}</div>` : '<div style="height:24px"></div>'}
-      <div class="am-text">${gmRenderBody(col.body)}</div>
+      ${notice}
+      <div class="am-text"${col.untranslated && GM_LANG !== 'ja' ? ' lang="ja"' : ''}>${gmRenderBody(col.body)}</div>
       <div class="am-nav">
-        ${prev ? `<button data-go="${gmEsc(prev.id)}">← 新しいコラム<b>${gmEsc(prev.title)}</b></button>` : '<span></span>'}
-        ${next ? `<button class="nx" data-go="${gmEsc(next.id)}">古いコラム →<b>${gmEsc(next.title)}</b></button>` : '<span></span>'}
+        ${prev ? `<button data-go="${gmEsc(prev.id)}">${gmEsc(gmT('newer'))}<b>${gmEsc(prev.title)}</b></button>` : '<span></span>'}
+        ${next ? `<button class="nx" data-go="${gmEsc(next.id)}">${gmEsc(gmT('older'))}<b>${gmEsc(next.title)}</b></button>` : '<span></span>'}
       </div>
     </div>`;
   gmGalleryMount($('amInner'), col);
@@ -681,7 +720,7 @@ function openArticle(id){
   $('articleModal').scrollTop = 0;
   document.body.style.overflow = 'hidden';
   $('amClose').focus();
-  if(location.hash !== '#article=' + id) history.pushState({ article:id }, '', '#article=' + id);
+  if(location.hash !== '#article=' + id) history.pushState({ article:id }, '', location.pathname + location.search + '#article=' + id);
 }
 function closeArticle(){
   $('articleModal').classList.remove('open');
@@ -701,9 +740,10 @@ window.addEventListener('popstate', () => {
 /* 九つの食卓 → ランキングのカテゴリーへ */
 document.querySelectorAll('.cp[data-cat]').forEach(b => {
   const key = b.dataset.cat, c = CATS.find(x => x.key === key);
-  b.querySelector('.cp-c').textContent = (c ? c.name + ' ' + c.shops + '軒' : 'すべての店 ' + GM_ROWS.length + '件') + '　ランキングで見る →';
+  const label = c ? (GM_LANG === 'ja' ? c.name + ' ' + c.shops + '軒' : c.label) : gmT('all_shops', { n: GM_ROWS.length });
+  b.querySelector('.cp-c').textContent = gmT('cp_see', { label });
   b.addEventListener('click', () => {
-    state.cat = c ? key : ''; state.star = 0; state.genre = ''; state.q = ''; state.shown = PAGE;
+    state.cat = c ? key : ''; state.star = 0; state.genre = ''; state.q = ''; state.area = ''; state.shown = PAGE;
     $('q').value = ''; syncRanking();
     $('ranking').scrollIntoView({ behavior:'smooth' });
   });
@@ -732,7 +772,7 @@ const GM_AREAS = [
   ['鎌倉・藤沢・茅ヶ崎・湘南', ['鎌倉','藤沢','茅ヶ崎','湘南台','逗子','葉山']],
   ['小田原・熱海・沼津', ['小田原','熱海','沼津','根府川']],
   ['三浦・館山・勝浦（海の幸）', ['三崎','館山','勝浦','金田湾']],
-  ['東京（渋谷・目黒・白金ほか）', ['渋谷','目黒','白金','南青山','麻布','表参道','恵比寿','五反田','品川','新橋','神保町','赤坂','西新宿','三軒茶屋','自由が丘','中目黒','梅田']],
+  ['東京（渋谷・目黒・白金ほか）', ['渋谷','目黒','白金','南青山','麻布','表参道','恵比寿','五反田','品川','新橋','神保町','水道橋','赤坂','西新宿','三軒茶屋','自由が丘','中目黒','梅田']],
   ['群馬', ['群馬']],
   ['博多', ['博多']],
   ['名古屋・浜松', ['名古屋','浜松']],
@@ -747,7 +787,7 @@ function renderMapGrid(){
   const groups = {};
   GM_ROWS.forEach(r => { const a = gmAreaOf(r); (groups[a] = groups[a] || []).push(r); });
   const order = [...GM_AREAS.map(a => a[0]), 'その他・記載なし'].filter(a => groups[a] && groups[a].length);
-  $('mapStatus').textContent = order.length + 'エリア、' + GM_ROWS.length + '件';
+  $('mapStatus').textContent = gmT('map_status', { a: order.length, n: GM_ROWS.length });
   $('mapGrid').innerHTML = order.map(area => {
     const rows = groups[area].sort((a, b) => a.n - b.n);
     const shown = rows.slice(0, 8);
@@ -755,14 +795,14 @@ function renderMapGrid(){
     const chips = shown.map(r => {
       const col = RANK_COL2[r.n];
       return col
-        ? `<button type="button" class="map-shop has-col" data-open-col="${gmEsc(col.id)}">${gmEsc(r.name)}</button>`
-        : `<button type="button" class="map-shop" data-map-search="${gmEsc(r.name)}">${gmEsc(r.name)}</button>`;
+        ? `<button type="button" class="map-shop has-col" data-open-col="${gmEsc(col.id)}">${gmEsc(rowName(r))}</button>`
+        : `<button type="button" class="map-shop" data-map-search="${gmEsc(rowName(r))}">${gmEsc(rowName(r))}</button>`;
     }).join('');
-    const more = rest > 0 ? `<span class="map-shop-more">他${rest}軒</span>` : '';
+    const more = rest > 0 ? `<span class="map-shop-more">${gmEsc(gmT('map_more', { n: rest }))}</span>` : '';
     return `<div class="map-card">
       <div class="map-card-head">
-        <button type="button" class="map-card-title" data-map-area="${gmEsc(area.split('（')[0].split('・')[0])}">${gmEsc(area)}</button>
-        <span class="map-card-count">${rows.length}軒</span>
+        <button type="button" class="map-card-title" data-map-area="${gmEsc(area.split('（')[0].split('・')[0])}" data-area-full="${gmEsc(area)}">${gmEsc(gmArea(area))}</button>
+        <span class="map-card-count">${gmEsc(gmShopsN(rows.length))}</span>
       </div>
       <div class="map-shop-list">${chips}${more}</div>
     </div>`;
@@ -779,7 +819,9 @@ document.addEventListener('click', e => {
   }
   const areaBtn = e.target.closest('[data-map-area]');
   if(areaBtn){
-    state.q = areaBtn.dataset.mapArea; state.shown = PAGE; $('q').value = state.q; syncRanking();
+    if(GM_LANG === 'ja'){ state.q = areaBtn.dataset.mapArea; $('q').value = state.q; }
+    else { state.area = areaBtn.dataset.areaFull; state.q = ''; $('q').value = ''; }   // 英韓はエリアそのもので絞り込む
+    state.shown = PAGE; syncRanking();
     $('ranking').scrollIntoView({ behavior: 'smooth' });
   }
 });
