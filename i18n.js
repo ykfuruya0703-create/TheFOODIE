@@ -307,7 +307,7 @@ const GM_I18N_RANK = {
   50:{en:['Uosui','Katsuura morning market / Seafood rice bowl'],ko:['우오스이','가쓰우라 아침 시장 / 해산물 덮밥']},
   51:{en:['Kawamuraya','Soba / Sakuragicho'],ko:['가와무라야','소바 / 사쿠라기초']},
   52:{en:['L’Antica Pizzeria da Michele','Ebisu / Pizza'],ko:['란티카 피체리아 다 미켈레','에비스 피자']},
-  53:{en:['Aji no Kokuya, Fujisawa','Neighborhood Chinese'],ko:['아지노 고쿠야 후지사와점','동네 중국집']},
+  53:{en:['Aji no Kokuya, Fujisawa','Fujisawa Station / Neighborhood Chinese in a building basement / Fried rice and sanmamen / Lines'],ko:['아지노 고쿠야 후지사와점','후지사와역 / 빌딩 지하의 동네 중국집 / 볶음밥·산마멘 / 줄 서는 가게']},
   54:{en:['Kannai Masuya','Yakitori & oden'],ko:['간나이 마스야','야키토리와 오뎅']},
   55:{en:['Bistro Monte','Kannai'],ko:['비스트로 몬테','간나이']},
   56:{en:['Minatoan','Founded 1965 / Mt. Fuji portion / Katsudon set'],ko:['미나토안','1965년 창업 / 후지산 곱빼기 / 가쓰동 세트']},
