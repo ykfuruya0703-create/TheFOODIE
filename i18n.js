@@ -236,6 +236,11 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'ラーメン':['Ramen','라멘'], '煮干し':['Niboshi','니보시'], '九十九里':['Kujukuri','구주쿠리'], 'THE町中華':['Neighborhood Chinese','동네 중국집'],
+  '玉子炒飯':['Egg Fried Rice','달걀 볶음밥'], '海鮮':['Seafood','해산물'], '仲間店':['With Friends','친구와 함께'], '刺身とフライ':['Sashimi & Fry','회와 튀김'],
+  'サンマーメン':['Sanmamen','산마멘'], '名古屋':['Nagoya','나고야'], '台湾ラーメン':['Taiwan Ramen','타이완 라멘'], '明洞':['Myeongdong','명동'],
+  'カルグクス':['Kalguksu','칼국수'], 'デート・夫婦で行く店':['Dates & Couples','데이트·부부'], '海鮮丼':['Seafood Bowl','해산물 덮밥'], '相模湾':['Sagami Bay','사가미만'],
+  '鮨':['Sushi','스시'], '四川料理':['Sichuan Cuisine','쓰촨 요리'], '麻婆豆腐':['Mapo Tofu','마파두부'],
   'ランチ店':['Lunch Spots','점심 맛집'], 'ひとり飯店':['Solo Dining','혼밥 맛집'], 'おひとり様':['Solo','혼밥'],
   '水道橋':['Suidobashi','스이도바시'], 'さばめし':['Saba-meshi','사바메시'], 'ここぞという店':['Special Occasions','특별한 날의 한 곳'],
   '家族と一緒店':['With Family','가족과 함께'], 'デート・夫婦で行く':['Dates & Couples','데이트·부부'], '会食店':['Business Dining','회식·접대'],
@@ -337,7 +342,7 @@ const GM_I18N_RANK = {
   80:{en:['Ganso Nagahamaya',''],ko:['간소 나가하마야','']},
   81:{en:['Taishi','Soba / Bandobashi'],ko:['다이시','소바 / 반도바시']},
   82:{en:['Numazu Sekino','Seafood'],ko:['누마즈 세키노','해산물']},
-  83:{en:['Ramen NAKAMICHI Kujukuri',''],ko:['라멘 NAKAMICHI 구주쿠리','']},
+  83:{en:['Ramen NAKAMICHI Kujukuri','Kujukuri / Niboshi ramen'],ko:['라멘 NAKAMICHI 구주쿠리','구주쿠리 / 니보시 라멘']},
   84:{en:['Minato Shokudo','Honmoku'],ko:['미나토 식당','혼모쿠']},
   85:{en:['Shogayaki Baka','Akasaka'],ko:['쇼가야키 바카','아카사카']},
   86:{en:['Marudori Ruisuke Hanare','Nishi-Shinjuku'],ko:['마루도리 루이스케 하나레','니시신주쿠']},
