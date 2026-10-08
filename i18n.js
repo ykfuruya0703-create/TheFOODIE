@@ -236,6 +236,7 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'うなぎ':['Unagi (Eel)','장어'], '浜松':['Hamamatsu','하마마쓰'],
   'ラーメン':['Ramen','라멘'], '煮干し':['Niboshi','니보시'], '九十九里':['Kujukuri','구주쿠리'], 'THE町中華':['Neighborhood Chinese','동네 중국집'],
   '玉子炒飯':['Egg Fried Rice','달걀 볶음밥'], '海鮮':['Seafood','해산물'], '仲間店':['With Friends','친구와 함께'], '刺身とフライ':['Sashimi & Fry','회와 튀김'],
   'サンマーメン':['Sanmamen','산마멘'], '名古屋':['Nagoya','나고야'], '台湾ラーメン':['Taiwan Ramen','타이완 라멘'], '明洞':['Myeongdong','명동'],
@@ -283,7 +284,7 @@ const GM_I18N_RANK = {
   21:{en:['Daiko','Minami-Ota / Miso ramen / Originally in Kurihama, Yokosuka'],ko:['다이코','미나미오타 / 미소 라멘 / 원래 요코스카 구리하마의 가게']},
   22:{en:['Hoshi no Udon','Muraoka main store'],ko:['호시노 우동','무라오카 본점']},
   23:{en:['Hachiryu','Tammachi / Chinese'],ko:['하치류','단마치 / 중식']},
-  24:{en:['Unagi Chigusa','Hamamatsu'],ko:['우나기 지구사','하마마쓰']},
+  24:{en:['Unagi Chigusa','Hamamatsu / Unaju'],ko:['우나기 지구사','하마마쓰 / 우나주']},
   25:{en:['Udon Maruka','Jimbocho'],ko:['우동 마루카','진보초']},
   26:{en:['Aichyuin','Chinatown / Beef brisket rice / Lines even at weekday lunch'],ko:['아이췬','차이나타운 / 소고기 양지 덮밥 / 평일 점심에도 줄']},
   27:{en:['Café La Poème','Shirokane'],ko:['카페 라 포엠','시로카네']},
