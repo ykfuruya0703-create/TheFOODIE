@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'ハシゴ酒':['Bar Hopping','술집 순례'],
+  '寿司':['Sushi','스시'],
   'うなぎ':['Unagi (Eel)','장어'], '浜松':['Hamamatsu','하마마쓰'],
   'ラーメン':['Ramen','라멘'], '煮干し':['Niboshi','니보시'], '九十九里':['Kujukuri','구주쿠리'], 'THE町中華':['Neighborhood Chinese','동네 중국집'],
   '玉子炒飯':['Egg Fried Rice','달걀 볶음밥'], '海鮮':['Seafood','해산물'], '仲間店':['With Friends','친구와 함께'], '刺身とフライ':['Sashimi & Fry','회와 튀김'],
@@ -336,7 +338,7 @@ const GM_I18N_RANK = {
   73:{en:['Curry House Rio','Yokohama West Exit'],ko:['카레 하우스 리오','요코하마 서쪽 출구']},
   74:{en:['Tokyu Hotel Buffet',''],ko:['도큐 호텔 뷔페','']},
   75:{en:['Oniyanma','Udon'],ko:['오니얀마','우동']},
-  76:{en:['Menoji','Noge underground / Izakaya'],ko:['메노지','노게 지하 / 이자카야']},
+  76:{en:['Menoji','Noge underground / Seafood izakaya'],ko:['메노지','노게 지하 / 해산물 이자카야']},
   77:{en:['Nebukawa DON','Seafood rice bowl'],ko:['네부카와 DON','해산물 덮밥']},
   78:{en:['Tonkatsu Sakurai',''],ko:['돈가스 사쿠라이','']},
   79:{en:['Toki wa Buta Nari, Gumyoji',''],ko:['도키와 부타나리 구묘지점','']},
