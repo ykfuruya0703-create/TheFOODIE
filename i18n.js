@@ -236,6 +236,9 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'おかわり自由':['Free Refills','무한 리필'],
+  '伊勢佐木町':['Isezakicho','이세자키초'],
+  'とんかつ':['Tonkatsu','돈카쓰'],
   '札幌':['Sapporo','삿포로'],
   'ハシゴ酒':['Bar Hopping','술집 순례'],
   '寿司':['Sushi','스시'],
@@ -359,7 +362,7 @@ const GM_I18N_RANK = {
   93:{en:['Jiba','Yakitori / Kannai'],ko:['지바','야키토리 / 간나이']},
   94:{en:['Takegawa Udon','Yamanashi'],ko:['다케가와 우동','야마나시']},
   95:{en:['Murasaki','Higashi-Kanagawa / Sushi'],ko:['무라사키','히가시카나가와 / 스시']},
-  96:{en:['Tonkatsu no Hamaya','Isezakicho'],ko:['돈가스노 하마야','이세자키초']},
+  96:{en:['Tonkatsu Hamaya','Isezakicho / Premium loin set / Free rice & miso soup refills'],ko:['돈카쓰 하마야','이세자키초 / 상등심 정식 / 밥·된장국 무한 리필']},
   97:{en:['Tamaya','Sashimi set meal / Isezakicho / From 11:30'],ko:['다마야','사시미 정식 / 이세자키초 / 11시 반~']},
   98:{en:['Heroes','Steak'],ko:['히어로즈','스테이크']},
   99:{en:['BiOsteria Komakine','Maita / Italian'],ko:['BiOsteria Komakine','마이타 / 이탈리안']},
