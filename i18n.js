@@ -236,6 +236,10 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'パン屋':['Bakery','빵집'],
+  '塩パン':['Salt Bread','소금빵'],
+  '小坪':['Kotsubo','고쓰보'],
+  'モンキー125':['Monkey 125','몽키 125'],
   'おかわり自由':['Free Refills','무한 리필'],
   '伊勢佐木町':['Isezakicho','이세자키초'],
   'とんかつ':['Tonkatsu','돈카쓰'],
@@ -378,7 +382,7 @@ const GM_I18N_RANK = {
   109:{en:['Curry Baka Seiki','Meguro'],ko:['카레바카 세이키','메구로']},
   110:{en:['Steak Oyadama','Fukutomicho'],ko:['스테이크 오야다마','후쿠토미초']},
   111:{en:['Daiichitei','Hinodecho, Yokohama / Neighborhood Chinese'],ko:['다이이치테이','요코하마 히노데초 / 동네 중국집']},
-  112:{en:['Rainbow Bakery','Zushi Marina'],ko:['레인보 베이커리','즈시 마리나']},
+  112:{en:['Rainbow Bakery','Kotsubo / Zushi Marina / Salt bread & croissant / To the harbor on a Monkey 125'],ko:['레인보 베이커리','고쓰보 / 즈시 마리나 / 소금빵과 크루아상 / 몽키 125로 항구까지']},
   113:{en:['Sugidama','Sangenjaya'],ko:['스기다마','산겐자야']},
   114:{en:['Kiji','Okonomiyaki / Umeda'],ko:['기지','오코노미야키 / 우메다']},
   115:{en:['Meat Shop Kitagaki','Matsue croquettes'],ko:['미트숍 기타가키','마쓰에 고로케']},
