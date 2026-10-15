@@ -236,6 +236,10 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '吉田のうどん':['Yoshida Udon','요시다 우동'],
+  '肉うどん':['Niku Udon','니쿠 우동'],
+  '山梨':['Yamanashi','야마나시'],
+  'キャンプ':['Camping','캠핑'],
   'パン屋':['Bakery','빵집'],
   '塩パン':['Salt Bread','소금빵'],
   '小坪':['Kotsubo','고쓰보'],
@@ -364,7 +368,7 @@ const GM_I18N_RANK = {
   91:{en:['Tokyoan','Noge / Soba'],ko:['도쿄안','노게 / 소바']},
   92:{en:['Don Manjiro','Odawara'],ko:['돈 만지로','오다와라']},
   93:{en:['Jiba','Yakitori / Kannai'],ko:['지바','야키토리 / 간나이']},
-  94:{en:['Takegawa Udon','Yamanashi'],ko:['다케가와 우동','야마나시']},
+  94:{en:['Takegawa Udon','Yamanashi branch / Yoshida udon / Niku udon with extra tenkasu / On the way to Hottarakashi Campground'],ko:['다케가와 우동','야마나시점 / 요시다 우동 / 니쿠 우동＋덴카스 곱빼기 / 홋타라카시 캠핑장 가는 길에']},
   95:{en:['Murasaki','Higashi-Kanagawa / Sushi'],ko:['무라사키','히가시카나가와 / 스시']},
   96:{en:['Tonkatsu Hamaya','Isezakicho / Premium loin set / Free rice & miso soup refills'],ko:['돈카쓰 하마야','이세자키초 / 상등심 정식 / 밥·된장국 무한 리필']},
   97:{en:['Tamaya','Sashimi set meal / Isezakicho / From 11:30'],ko:['다마야','사시미 정식 / 이세자키초 / 11시 반~']},
