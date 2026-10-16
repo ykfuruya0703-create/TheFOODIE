@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  'ハンバーグ':['Hamburg Steak','햄버그'],
+  '記念日':['Anniversaries','기념일'],
   '吉田のうどん':['Yoshida Udon','요시다 우동'],
   '肉うどん':['Niku Udon','니쿠 우동'],
   '山梨':['Yamanashi','야마나시'],
@@ -316,7 +318,7 @@ const GM_I18N_RANK = {
   39:{en:['Toriise','Noge'],ko:['도리이세','노게']},
   40:{en:['Tendon Hachimaki','Jimbocho'],ko:['텐동 하치마키','진보초']},
   41:{en:['Unagi Yondaime Kikukawa','Yokohama'],ko:['우나기 욘다이메 기쿠카와','요코하마']},
-  42:{en:['Hungry Tiger',''],ko:['헝그리 타이거','']},
+  42:{en:['Hungry Tiger','Yokohama / Founded 1969, Hodogaya main store / Double Hamburg Steak / Cut and sauced at your table'],ko:['헝그리 타이거','요코하마 / 1969년 창업·호도가야 본점 / 더블 햄버그 스테이크 / 눈앞에서 커트＆소스']},
   43:{en:['Jidoriya Tsukada',''],ko:['지도리야 쓰카다','']},
   44:{en:['Toriton','Noge / Dakhanmari specialist'],ko:['도리톤','노게 / 닭한마리 전문점']},
   45:{en:['Shibuya Tatsukichi','Aged gyoza specialist'],ko:['시부야 다쓰키치','숙성 교자 전문점']},
