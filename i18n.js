@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '担々麺':['Dandan Noodles','탄탄멘'],
+  'チャーハン':['Fried Rice','볶음밥'],
   'ハンバーグ':['Hamburg Steak','햄버그'],
   '記念日':['Anniversaries','기념일'],
   '吉田のうどん':['Yoshida Udon','요시다 우동'],
@@ -344,7 +346,7 @@ const GM_I18N_RANK = {
   65:{en:['Riddler Neo','Sakuragicho City Hall / Italian'],ko:['리들러 네오','사쿠라기초 시청사 / 이탈리안']},
   66:{en:['Trattoria Ciaolo','Meguro / Italian'],ko:['트라토리아 차오로','메구로 / 이탈리안']},
   67:{en:['Hitsuji no Osama','Hiranumabashi / From 11:30'],ko:['히쓰지노 오사마','히라누마바시 / 11시 반~']},
-  68:{en:['Keikaro','Yokohama West Exit / Mapo tofu set meal'],ko:['게이카로','요코하마 서쪽 출구 / 마파두부 정식']},
+  68:{en:['Kyokaro','Yokohama West Exit, Tsuruyacho / Dandan noodles + fried rice set / Mapo tofu set meal'],ko:['경화루(京華樓)','요코하마 서쪽 출구·쓰루야초 / 탄탄멘＋볶음밥 세트 / 마파두부 정식']},
   69:{en:['Seifuro','Chinatown / Yakimeshi (fried rice)'],ko:['세이후로','차이나타운 / 야키메시(볶음밥)']},
   70:{en:['Kawasaki Tairiku Gyoza','From 11:00 / Closed Sundays / Evenings from 17:00'],ko:['가와사키 다이리쿠 교자','11:00~ / 일요일 휴무 / 저녁 17시 시작']},
   71:{en:['Tonkatsu Tonki','Meguro'],ko:['돈가스 돈키','메구로']},
