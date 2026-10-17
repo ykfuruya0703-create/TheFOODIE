@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '唐揚げ':['Karaage','가라아게'],
+  '塩辛':['Salted Squid (Shiokara)','시오카라'],
   '担々麺':['Dandan Noodles','탄탄멘'],
   'チャーハン':['Fried Rice','볶음밥'],
   'ハンバーグ':['Hamburg Steak','햄버그'],
@@ -441,6 +443,7 @@ const GM_I18N_RANK = {
   160:{en:['Mukan Ramen',''],ko:['무칸 라멘','']},
   161:{en:['Udon Ganjin Bettei','Bashamichi / Near Yokohama Stadium / Golden flying-fish broth / One free raw egg'],ko:['우동 간진 벳테이','바샤미치 / 요코하마 스타디움 근처 / 황금 날치 육수 / 날달걀 1개 무료']},
   162:{en:['Sumire Noge','Noge / Sapporo miso ramen'],ko:['스미레 노게점','노게 / 삿포로 미소 라멘']},
+  163:{en:['Karayama','Karaage specialist / Karayama set meal, 4 pieces / All-you-can-eat salted squid'],ko:['가라야마','가라아게 전문점 / 가라야마 정식 4개 / 오징어 시오카라 무한 리필']},
 };
 /* 店名・メモ（翻訳がなければ日本語のまま。店名は原語を括弧で添える） */
 function gmRowT(r){
