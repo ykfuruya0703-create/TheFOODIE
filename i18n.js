@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '和食':['Japanese Cuisine','일식'],
+  '隠れ家':['Hideaway','숨은 명소'],
   'カツカレー':['Katsu Curry','가쓰 카레'],
   '唐揚げ':['Karaage','가라아게'],
   '塩辛':['Salted Squid (Shiokara)','시오카라'],
@@ -301,7 +303,7 @@ const GM_I18N_RANK = {
   17:{en:['Daishin','Ramen / Kamakura, Fujisawa, Chigasaki'],ko:['다이신','라멘 / 가마쿠라·후지사와·지가사키']},
   18:{en:['Kawasaki Tairiku Gyoza','From 11:00 / Closed Sundays / Evenings from 17:00'],ko:['가와사키 다이리쿠 교자','11:00~ / 일요일 휴무 / 저녁 17시 시작']},
   19:{en:['Fujimaru','Kita-Shinagawa / Udon'],ko:['후지마루','기타시나가와 / 우동']},
-  20:{en:['Urara Betsuatsurae','Higashi-Kanagawa, Yokohama / 3 min walk from the station / Fine Japanese, Betsuatsurae course ¥6,600 / Hideaway'],ko:['우라라 베쓰아쓰라에','요코하마·히가시카나가와 / 역에서 도보 3분 / 고급 일식 베쓰아쓰라에 코스 6,600엔 / 숨은 명소']},
+  20:{en:['Urara Betsuatsurae','Higashi-Kanagawa, Yokohama / 3 min walk from the station / Fine Japanese, Betsuatsurae course ¥6,600 / Hideaway / Saturday Reward Lunch ¥3,500'],ko:['우라라 베쓰아쓰라에','요코하마·히가시카나가와 / 역에서 도보 3분 / 고급 일식 베쓰아쓰라에 코스 6,600엔 / 숨은 명소 / 토요일 상 런치 3,500엔']},
   21:{en:['Daiko','Minami-Ota / Miso ramen / Originally in Kurihama, Yokosuka'],ko:['다이코','미나미오타 / 미소 라멘 / 원래 요코스카 구리하마의 가게']},
   22:{en:['Hoshi no Udon','Muraoka main store'],ko:['호시노 우동','무라오카 본점']},
   23:{en:['Hachiryu','Tammachi / Chinese'],ko:['하치류','단마치 / 중식']},
