@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '二郎系':['Jiro-Style','지로계'],
+  '弘明寺':['Gumyoji','구묘지'],
   '和食':['Japanese Cuisine','일식'],
   '隠れ家':['Hideaway','숨은 명소'],
   'カツカレー':['Katsu Curry','가쓰 카레'],
@@ -362,7 +364,7 @@ const GM_I18N_RANK = {
   76:{en:['Menoji','Noge underground / Seafood izakaya'],ko:['메노지','노게 지하 / 해산물 이자카야']},
   77:{en:['Nebukawa DON','Seafood rice bowl'],ko:['네부카와 DON','해산물 덮밥']},
   78:{en:['Tonkatsu Sakurai',''],ko:['돈가스 사쿠라이','']},
-  79:{en:['Toki wa Buta Nari, Gumyoji',''],ko:['도키와 부타나리 구묘지점','']},
+  79:{en:['Toki wa Buta Nari, Gumyoji','Gumyoji / Jiro-style produced by a woman / Tanjiro ¥1,200 / Order sheet, pay after eating'],ko:['도키와 부타나리 구묘지점','구묘지 / 여성 프로듀스 지로계 / 탄지로 1,200엔 / 주문서, 후불']},
   80:{en:['Ganso Nagahamaya',''],ko:['간소 나가하마야','']},
   81:{en:['Taishi','Soba / Bandobashi'],ko:['다이시','소바 / 반도바시']},
   82:{en:['Numazu Sekino','Seafood'],ko:['누마즈 세키노','해산물']},
