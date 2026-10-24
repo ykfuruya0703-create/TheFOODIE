@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '芦名':['Ashina','아시나'],
+  '三浦半島':['Miura Peninsula','미우라반도'],
   '二郎系':['Jiro-Style','지로계'],
   '弘明寺':['Gumyoji','구묘지'],
   '和食':['Japanese Cuisine','일식'],
@@ -343,7 +345,7 @@ const GM_I18N_RANK = {
   55:{en:['Bistro Monte','Kannai'],ko:['비스트로 몬테','간나이']},
   56:{en:['Minatoan','Founded 1965 / Mt. Fuji portion / Katsudon set'],ko:['미나토안','1965년 창업 / 후지산 곱빼기 / 가쓰동 세트']},
   57:{en:['Bluff Bakery','Motomachi, Yokohama'],ko:['블러프 베이커리','요코하마 모토마치']},
-  58:{en:['Ashina Bakery',''],ko:['아시나 베이커리','']},
+  58:{en:['Ashina Bakery','Ashina, Yokosuka / On Route 134 / Campagne baguette ¥280 / A stop by motorcycle'],ko:['아시나 베이커리','요코스카·아시나 / 국도 134호 변 / 캉파뉴 바게트 280엔 / 바이크로 들르는 곳']},
   59:{en:['Dakhanmari','Noge / Korean'],ko:['닭한마리','노게 / 한식']},
   60:{en:['Teppanyaki','Ebisu'],ko:['철판구이','에비스']},
   61:{en:['Kamata Huanying','Chinese'],ko:['가마타 환잉','중식']},
