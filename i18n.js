@@ -236,6 +236,8 @@ function gmArea(a){ const t = GM_I18N_AREAS[a]; return GM_LANG === 'ja' || !t ? 
 
 /* ---------------- コラムのタグ ---------------- */
 const GM_I18N_TAGS = {
+  '山中湖':['Lake Yamanaka','야마나카호'],
+  '富士山':['Mt. Fuji','후지산'],
   '鎌倉':['Kamakura','가마쿠라'],
   '番外編':['Special Edition','번외편'],
   '芦名':['Ashina','아시나'],
@@ -376,7 +378,7 @@ const GM_I18N_RANK = {
   84:{en:['Minato Shokudo','Honmoku'],ko:['미나토 식당','혼모쿠']},
   85:{en:['Shogayaki Baka','Akasaka'],ko:['쇼가야키 바카','아카사카']},
   86:{en:['Marudori Ruisuke Hanare','Nishi-Shinjuku'],ko:['마루도리 루이스케 하나레','니시신주쿠']},
-  87:{en:['ZEIT Bakery Cafe','Lake Yamanaka / Bakery / Opens at 7:00'],ko:['ZEIT Bakery Cafe','야마나카호 / 빵집 / 7시~']},
+  87:{en:['ZEIT Bakery Cafe','Lake Yamanaka / Bakery café in the forest / Opens at 7:00 / Salt bread & croissants / Riding to Mt. Fuji'],ko:['ZEIT Bakery Cafe','야마나카호 / 숲속 베이커리 카페 / 아침 7시~ / 소금빵과 크루아상 / 바이크로 후지산으로']},
   88:{en:['Zebra Coffee','Croissants 🥐'],ko:['제브라 커피','크루아상 🥐']},
   89:{en:['Sugidama','Sangenjaya / Shin-Kawasaki'],ko:['스기다마','산겐자야 / 신카와사키']},
   90:{en:['Torishige','Noge / Mr. Shida'],ko:['도리시게','노게 / 시다 씨']},
