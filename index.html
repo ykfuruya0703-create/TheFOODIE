@@ -27,8 +27,11 @@ var _trackingid = 'LFT-46372-1';
     var snode = document.getElementsByTagName('script')[0]; snode.parentNode.insertBefore(lft, snode);
 })();
 </script>
-<title id="pageTitle">THE FOODIE EDIT | LUXURY FOODIE JOURNAL</title>
-<meta name="description" id="metaDesc" content="自分なりの美味しいもの、フーディーを深く読み解く、大人のための食事コラム。家族・仲間・おひとり様・デート・夫婦で行くの四つの食卓から、食べ歩き155件のランキングを読み解く。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<title id="pageTitle">LUXURY FOODIE JOURNAL | 食を愉しむ。人生を深める。</title>
+<meta name="description" id="metaDesc" content="美食は、人生を豊かにする知的な嗜み。自分らしい「美味しい」を探求する大人の食事コラム。家族・仲間・おひとり様・デート・夫婦で行くの四つの食卓から、食べ歩き155件のランキングを読み解く。">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -38,8 +41,8 @@ var _trackingid = 'LFT-46372-1';
   --border:rgba(201,167,105,0.13);--border2:rgba(201,167,105,0.30);
 }
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:var(--bg0);color:var(--text);overflow-x:hidden;line-height:1.7}
-.serif{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif}
+body{font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP','Noto Sans CJK JP',sans-serif;background:var(--bg0);color:var(--text);overflow-x:hidden;line-height:1.7}
+.serif{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 8%,rgba(201,167,105,0.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 85%,rgba(138,51,36,0.05) 0%,transparent 60%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(201,167,105,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,167,105,0.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(201,167,105,0.25);border-radius:2px}
@@ -72,6 +75,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;height:70px;display:flex;
 .logo-mark{width:38px;height:38px;border:1px solid var(--border2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--gold2);flex-shrink:0}
 .logo-text b{font-size:14px;color:#fff;display:block;letter-spacing:2px}
 .logo-text span{font-size:9px;color:var(--gold);letter-spacing:3px}
+.logo-text b i{font-style:normal}
+@media(max-width:600px){.logo-text b{font-size:12px;letter-spacing:1.5px;line-height:1.35}.logo-text b i{display:block}}
 nav{display:flex;gap:30px;margin-left:52px}
 nav a{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:1px;transition:.2s;position:relative}
 nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:.3s}
@@ -85,7 +90,7 @@ nav a:hover{color:var(--gold2)}nav a:hover::after{width:100%}
 @media(max-width:600px){.hdr-cta .btn{display:none}.logo-text span{display:none}.lang-sw button{padding:5px 7px}}
 html[lang="ko"] body{font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;word-break:keep-all}
 html[lang="ko"] .serif,html[lang="ko"] .am-nav b{font-family:'AppleMyungjo','Nanum Myeongjo','Noto Serif KR',serif}
-html[lang="en"] .serif,html[lang="en"] .am-nav b{font-family:Georgia,'Times New Roman','Hiragino Mincho ProN',serif}
+html[lang="en"] .serif,html[lang="en"] .am-nav b{font-family:Georgia,'Times New Roman','Hiragino Mincho ProN','Noto Serif JP','Noto Serif CJK JP',serif}
 .am-notice{margin:0 0 26px;padding:14px 16px;border:1px solid var(--border2);border-left:3px solid var(--gold);background:rgba(201,167,105,.06);font-size:12.5px;color:var(--text2);line-height:1.8}
 .rk-orig{font-size:11px;color:var(--text3);margin-left:8px;font-weight:400}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:2px;font-size:11px;font-weight:700;text-decoration:none;transition:all .25s;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:0}
@@ -172,11 +177,11 @@ section{padding:104px 0;position:relative;z-index:1}
 .cp-list{display:flex;flex-direction:column;gap:10px}
 .cp{display:flex;align-items:flex-start;gap:16px;background:rgba(22,18,9,0.7);border:1px solid var(--border);border-radius:2px;padding:20px;transition:all .3s;text-align:left;width:100%;cursor:pointer}
 .cp:hover{border-color:var(--gold);transform:translateX(4px)}
-.cp-ico{font-size:22px;flex-shrink:0;margin-top:-2px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho',serif;width:28px}
+.cp-ico{font-size:22px;flex-shrink:0;margin-top:-2px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif;width:28px}
 .cp-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.5px}
 .cp-d{font-size:12px;color:var(--text2);line-height:1.8}
 .cp.st{cursor:default}.cp.st:hover{transform:none;border-color:var(--border2)}
-.cp-c{display:block;margin-top:8px;font-size:12px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.cp-c{display:block;margin-top:8px;font-size:12px;color:var(--gold2);font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif}
 /* pickup */
 #pickup{background:var(--bg0)}
 .pickup-card{display:grid;grid-template-columns:440px 1fr;border:1px solid var(--border2);border-radius:4px;overflow:hidden;background:rgba(16,13,9,0.6);cursor:pointer;transition:.35s}
@@ -215,7 +220,7 @@ section{padding:104px 0;position:relative;z-index:1}
 .guide{background:rgba(16,13,9,0.7);border:1px solid var(--border);border-radius:3px;padding:26px 16px 22px;text-align:center;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;align-items:center}
 .guide:hover{border-color:var(--gold);transform:translateY(-3px)}
 .guide-n{font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:14px}
-.guide-i{font-size:34px;font-weight:700;line-height:1;margin-bottom:14px;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.guide-i{font-size:34px;font-weight:700;line-height:1;margin-bottom:14px;font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif}
 .guide-i small{font-size:12px;margin-left:3px;color:var(--text2);font-weight:400}
 .guide-l{font-size:13.5px;color:#fff;font-weight:700;line-height:1.5;margin-bottom:8px}
 .guide-d{font-size:11px;color:var(--text2);line-height:1.8}
@@ -250,9 +255,9 @@ section{padding:104px 0;position:relative;z-index:1}
 .rk-th img{width:100%;height:100%;object-fit:cover;display:block}
 .rk-th-empty{background:linear-gradient(135deg,#2a2118,#131009);display:flex;align-items:center;justify-content:center}
 .rk-th-empty::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:3px 3px;opacity:.4}
-.rk-th-empty b{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:40px;font-weight:700;color:var(--gold2);opacity:.2;line-height:1}
+.rk-th-empty b{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif;font-size:40px;font-weight:700;color:var(--gold2);opacity:.2;line-height:1}
 .rk:hover{background:rgba(201,167,105,0.03)}
-.rk-n{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:700;font-size:22px;text-align:right;color:var(--text3);font-variant-numeric:tabular-nums}
+.rk-n{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif;font-weight:700;font-size:22px;text-align:right;color:var(--text3);font-variant-numeric:tabular-nums}
 .rk-name{font-weight:700;font-size:15px;line-height:1.5;color:#fff}
 .rk-memo{display:block;font-size:12px;color:var(--text2);margin-top:1px}
 .rk-genre{font-size:11.5px;color:var(--text2);letter-spacing:.5px}
@@ -287,7 +292,7 @@ footer strong{color:var(--text2)}
 .am-en{font-size:10px;color:var(--gold);letter-spacing:3px;margin-bottom:30px}
 .am-text{max-width:41em}
 .am-text p{font-size:14px;color:var(--text);line-height:2.1;margin-bottom:1.4em}
-.am-text h3{font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:19px;font-weight:700;color:var(--gold2);line-height:1.6;margin:2.4em 0 .9em;padding-bottom:.4em;border-bottom:1px solid var(--border2)}
+.am-text h3{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif;font-size:19px;font-weight:700;color:var(--gold2);line-height:1.6;margin:2.4em 0 .9em;padding-bottom:.4em;border-bottom:1px solid var(--border2)}
 .am-text ul,.am-text ol{margin:0 0 1.5em 1.4em;color:var(--text)}
 .am-text li{font-size:14px;line-height:2;margin-bottom:.3em}
 .am-text strong{color:#fff;font-weight:700}
@@ -320,7 +325,7 @@ footer strong{color:var(--text2)}
 .am-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
 .am-nav button{border:1px solid var(--border);background:rgba(22,18,9,.6);padding:14px 16px;text-align:left;cursor:pointer;border-radius:2px;font-size:11px;color:var(--text3);letter-spacing:1px;line-height:1.6;transition:.25s}
 .am-nav button:hover{border-color:var(--gold)}
-.am-nav b{display:block;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:13.5px;color:var(--text);letter-spacing:0;margin-top:2px}
+.am-nav b{display:block;font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',serif;font-size:13.5px;color:var(--text);letter-spacing:0;margin-top:2px}
 .am-nav .nx{text-align:right}
 </style>
 </head>
@@ -330,7 +335,7 @@ footer strong{color:var(--text2)}
   <div class="header-inner">
     <a class="logo" href="#hero">
       <div class="logo-mark serif">食</div>
-      <div class="logo-text"><b class="serif">THE FOODIE EDIT</b><span>GOURMET COLUMN</span></div>
+      <div class="logo-text"><b class="serif">LUXURY FOODIE <i>JOURNAL</i></b><span>GOURMET COLUMN</span></div>
     </a>
     <nav>
       <a href="#concept" data-i18n="nav_concept">コンセプト</a>
@@ -349,8 +354,8 @@ footer strong{color:var(--text2)}
     <div class="hero-grid">
       <div>
         <div class="hero-badge animate-up"><span class="ln"></span>LUXURY FOODIE JOURNAL</div>
-        <h1 class="hero-title serif animate-up d1" data-i18n-html="hero_title"><span class="gradient-text">上質という、</span><br>纏う教養。</h1>
-        <p class="hero-sub animate-up d2" data-i18n-html="hero_sub">自分なりの美味しいもの　フーディーを深く読み解く、<br><strong style="color:var(--gold2)">大人のための食事コラム。</strong></p>
+        <h1 class="hero-title serif animate-up d1" data-i18n-html="hero_title"><span class="gradient-text">食を愉しむ。</span><br>人生を深める。</h1>
+        <p class="hero-sub animate-up d2" data-i18n-html="hero_sub">美食は、人生を豊かにする知的な嗜み。<br><strong style="color:var(--gold2)">自分らしい「美味しい」を探求する大人の食事コラム。</strong></p>
         <div class="hero-actions animate-up d3">
           <a href="#columns" class="btn btn-p btn-lg glow" data-i18n="hero_read">コラムを読む</a>
           <a href="#ranking" class="btn btn-o btn-lg" data-i18n="hero_rank">ランキング155件 →</a>
@@ -489,14 +494,14 @@ footer strong{color:var(--text2)}
   <div class="container">
     <div style="display:inline-block;margin-bottom:24px"><span class="tag tag-gold">Membership</span></div>
     <h2 class="cta-t serif" data-i18n-html="cta_title">上質を知る者だけに、<br><span class="gradient-text">先んじて届ける。</span></h2>
-    <p class="cta-d" data-i18n="cta_desc">THE FOODIE EDIT 会員限定で、新着コラムと限定インタビューをいち早くお届けします。</p>
+    <p class="cta-d" data-i18n="cta_desc">LUXURY FOODIE JOURNAL 会員限定で、新着コラムと限定インタビューをいち早くお届けします。</p>
     <a href="#columns" class="btn btn-p btn-lg glow" data-i18n="cta_btn">コラムに戻る</a>
   </div>
 </section>
 
 <footer>
   <p><strong class="serif">LUXURY FOODIE JOURNAL</strong></p>
-  <p style="margin-top:6px" data-i18n="ft_line">自分なりの美味しいもの、フーディーを深く読み解く。</p>
+  <p style="margin-top:6px" data-i18n="ft_line">美食は、人生を豊かにする知的な嗜み。</p>
   <p style="margin-top:6px">© 2026 LUXURY FOODIE JOURNAL. All rights reserved.</p>
   <p style="margin-top:10px"><a href="admin.html" rel="nofollow" style="color:var(--text3);font-size:11px;text-decoration:none;letter-spacing:1px" data-i18n="ft_login">編集者ログイン</a></p>
 </footer>
@@ -525,7 +530,8 @@ document.getElementById('metaDesc').setAttribute('content', gmT('meta_desc', I18
 
 const COLUMNS = gmGetAllColumns().map(gmLocalizeColumn);
 const CATS = gmCategoryStats();
-const DEFAULT_TITLE = document.getElementById('pageTitle').textContent;
+const DEFAULT_TITLE = gmT('page_title', null, document.getElementById('pageTitle').textContent);
+document.title = DEFAULT_TITLE;
 const DEFAULT_DESC = document.getElementById('metaDesc').getAttribute('content');
 const fmt = n => gmFmt(n);
 const $ = id => document.getElementById(id);
